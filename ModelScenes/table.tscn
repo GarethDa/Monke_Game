@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bdv83u2wkttlh" path="res://Models/wood_table_lowpoly_2.png" id="3_k8670"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mki0m"]
-size = Vector3(1, 1.00983, 2.41724)
+size = Vector3(2.417, 1.01, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g60t8"]
 resource_name = "Material_128_Slot_1"
@@ -54,14 +54,14 @@ shadow_mesh = SubResource("ArrayMesh_4n1d0")
 
 [node name="Sketchfab_Scene" type="Node3D"]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Throwable"]]
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Big", "Throwable"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5051, -0.0057373)
 shape = SubResource("BoxShape3D_mki0m")
 
 [node name="Sketchfab_model" type="Node3D" parent="RigidBody3D"]
-transform = Transform3D(0.035, 0, 0, 0, -1.5299e-09, 0.035, 0, -0.035, -1.5299e-09, 0, 0.98743, 0)
+transform = Transform3D(-1.5299e-09, -0.035, -1.5299e-09, 0, -1.5299e-09, 0.035, -0.035, 1.5299e-09, 6.6874e-17, 0, 0.98743, 0)
 
 [node name="ec5ecec8f8984b7e8101de40b559f83e_fbx" type="Node3D" parent="RigidBody3D/Sketchfab_model"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)

@@ -47,7 +47,7 @@ shadow_mesh = SubResource("ArrayMesh_5i73m")
 
 [node name="Sketchfab_Scene" type="Node3D"]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Throwable"]]
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Big", "Throwable"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10869, 0)
