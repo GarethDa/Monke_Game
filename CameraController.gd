@@ -1,9 +1,9 @@
 extends Node3D
 
-@export_range(0,2) var testSensitivityX : float
-@export_range(0,2) var testSensitivityY : float
-var sensitivityX : float
-var sensitivityY : float
+#@export_range(0,2) var testSensitivityX : float
+#@export_range(0,2) var testSensitivityY : float
+@export_range(-2,2) var sensitivityX : float
+@export_range(-2,2)var sensitivityY : float
 var sensitivityXMulti : float = 1
 var sensitivityYMulti : float = 1
 @export var player : Node3D

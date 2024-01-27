@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://cs4220jcdxays"]
+
+[ext_resource type="Script" path="res://PlayerMovement.gd" id="1_e2ohl"]
+[ext_resource type="Script" path="res://PickUpItem.gd" id="2_radsf"]
+[ext_resource type="Script" path="res://CameraController.gd" id="3_dj3pf"]
+[ext_resource type="Script" path="res://ExcludePlayer.gd" id="4_rbvi6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t7wf1"]
+radius = 0.973886
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f5q0g"]
+height = 1.75
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uxd3r"]
+
+[node name="CharacterBody3D2" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 0)
+script = ExtResource("1_e2ohl")
+maxSpeed = 20.0
+jumpVelocity = 17.0
+gravityScale = 4.0
+
+[node name="Collider" type="Area3D" parent="."]
+script = ExtResource("2_radsf")
+torqueMultiplier = 7.0
+forwardThrowMultiplier = 20.0
+upwardThrowMultiplier = 1.0
+torqueSizeMultiplier = 7.0
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Collider"]
+shape = SubResource("CapsuleShape3D_t7wf1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_f5q0g")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
+remote_path = NodePath("../../Mesh")
+update_rotation = false
+update_scale = false
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.785, 0)
+script = ExtResource("3_dj3pf")
+sensitivityX = -0.2
+sensitivityY = 0.2
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Node3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+shape = SubResource("SphereShape3D_uxd3r")
+spring_length = 4.0
+script = ExtResource("4_rbvi6")
+
+[node name="Camera3D" type="Camera3D" parent="Node3D/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6232, 0, 9.61386)
+
+[connection signal="body_shape_entered" from="Collider" to="Collider" method="_on_body_shape_entered"]

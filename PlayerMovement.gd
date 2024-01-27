@@ -1,12 +1,16 @@
 extends CharacterBody3D
 
 
+# This represents the player's inertia.
+var push_force = 1
+var pickedUpItem : Node3D
+
 var SPEED = 0
 @export var maxSpeed = 5.0
 var speedDecrease : float = 0
 var speedDecline = 0.01
 var minSpeed : float = 2
-const JUMP_VELOCITY = 4.5
+@export var jumpVelocity : float
 var move : bool = true
 var turnSpeed : float = 15
 @export var camera : Camera3D
@@ -15,6 +19,7 @@ var turnSpeed : float = 15
 var lastPosition : Vector3 = Vector3(0,0,0)
 var hasMoved :bool = false
 var hasJumped : bool = false
+@export var gravityScale : float
 
 signal moved(index)
 signal jumped(index)
@@ -42,15 +47,15 @@ func _process(delta: float) -> void:
 		return
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y -= gravity * delta
-		speedDecrease+=speedDecline
-		SPEED = clamp(SPEED-speedDecrease,minSpeed,SPEED)
+		velocity.y -= (gravity * delta) * gravityScale
+		#speedDecrease+=speedDecline
+		#SPEED = clamp(SPEED-speedDecrease,minSpeed,SPEED)
 	else:
 		speedDecrease = 0
 		SPEED = maxSpeed
 	# Handle Jump.
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = jumpVelocity
 		emit_signal("onPlayerJump")
 		if hasMoved && !hasJumped:
 			jumped.emit()
@@ -76,4 +81,16 @@ func _process(delta: float) -> void:
 		
 	move_and_slide()
 	
+
+
+func _physics_process(delta):
+	# after calling move_and_slide()
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody3D:
+			if c.get_collider().is_in_group("Collected"):
+				return
+			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
+
+
 
