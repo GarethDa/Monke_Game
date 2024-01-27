@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://hcyr0nfjmpe6" path="res://Models/low-poly_empty_plastic_bottle_1.png" id="2_oiwur"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1tm5n"]
-height = 0.406216
-radius = 0.102997
+height = 0.719946
+radius = 0.201018
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ied3o"]
 resource_name = "Scene_-_Root"
@@ -56,11 +56,11 @@ shadow_mesh = SubResource("ArrayMesh_g0d7t")
 [node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Throwable"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.222896, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.321073, 0)
 shape = SubResource("CylinderShape3D_1tm5n")
 
 [node name="Sketchfab_model" type="Node3D" parent="RigidBody3D"]
-transform = Transform3D(0.08, 0, 0, 0, -3.49691e-09, 0.08, 0, -0.08, -3.49691e-09, 0, 0.0909949, 0)
+transform = Transform3D(0.135, 0, 0, 0, -5.90104e-09, 0.135, 0, -0.135, -5.90104e-09, 0, 0.0909949, 0)
 
 [node name="765d4efb72244765a966172b82431793_fbx" type="Node3D" parent="RigidBody3D/Sketchfab_model"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d2ofwqt0mbycd"]
+[gd_scene load_steps=25 format=3 uid="uid://d2ofwqt0mbycd"]
 
 [ext_resource type="Texture2D" uid="uid://dl7lox368iy4l" path="res://icon.svg" id="1_lp4df"]
 [ext_resource type="Script" path="res://CameraController.gd" id="1_mdf0j"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cuhdts7mmxg0l" path="res://ModelScenes/chair.tscn" id="9_glr0p"]
 [ext_resource type="PackedScene" uid="uid://20pyfxdita1h" path="res://ModelScenes/soda.tscn" id="10_siawf"]
 [ext_resource type="PackedScene" uid="uid://ct4wkktxky4vf" path="res://ModelScenes/table.tscn" id="11_1wudt"]
+[ext_resource type="Script" path="res://Witness.gd" id="11_lxige"]
+[ext_resource type="AudioStream" uid="uid://dfixpe0u8wc4r" path="res://Sounds/Monkeys Are Coming - Coyote Hearing.mp3" id="12_ubdce"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s1vdb"]
 sky_top_color = Color(0.247059, 0.462745, 0.670588, 1)
@@ -36,6 +38,16 @@ radius = 0.973886
 height = 1.75
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uxd3r"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0m1b5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bx52c"]
+radius = 0.4
+height = 1.9
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qqgsq"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_c3vla"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -75,7 +87,7 @@ player = NodePath("..")
 heldItemTransform = NodePath("../../Mesh/HeldItem")
 torqueMultiplier = 7.0
 forwardThrowMultiplier = 20.0
-upwardThrowMultiplier = 3.0
+upwardThrowMultiplier = 1.0
 torqueSizeMultiplier = 7.0
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterBody3D2/Collider"]
@@ -111,13 +123,62 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6232, 0, 9.61386)
 [node name="Bottle" parent="." instance=ExtResource("8_hcwkt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.70351, 1.19666, 3.19871)
 
+[node name="Bottle2" parent="." instance=ExtResource("8_hcwkt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6148, 1.19666, 4.25617)
+
+[node name="Bottle3" parent="." instance=ExtResource("8_hcwkt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2976, 1.19666, 4.86957)
+
 [node name="Chair" parent="." instance=ExtResource("9_glr0p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54573, 1.53141, 4.43403)
+
+[node name="Chair2" parent="." instance=ExtResource("9_glr0p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.01074, 1.53141, 7.59616)
+
+[node name="Chair3" parent="." instance=ExtResource("9_glr0p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.26742, 1.53141, 4.43403)
 
 [node name="Soda" parent="." instance=ExtResource("10_siawf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61706, 2.12607, 0)
 
+[node name="Soda3" parent="." instance=ExtResource("10_siawf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.19836, 2.12607, -1.411)
+
+[node name="Soda2" parent="." instance=ExtResource("10_siawf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71239, 2.12607, 0.777729)
+
 [node name="Table" parent="." instance=ExtResource("11_1wudt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 0)
 
+[node name="Table2" parent="." instance=ExtResource("11_1wudt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08196, 2, -2.25221)
+
+[node name="Table3" parent="." instance=ExtResource("11_1wudt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89141, 2, -4.26975)
+
+[node name="Witness" type="Node3D" parent="." node_paths=PackedStringArray("audio")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20486, 11.3469)
+script = ExtResource("11_lxige")
+audio = NodePath("AudioStreamPlayer3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Witness"]
+physics_material_override = SubResource("PhysicsMaterial_0m1b5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Witness/StaticBody3D"]
+shape = SubResource("CapsuleShape3D_bx52c")
+
+[node name="Area3D" type="Area3D" parent="Witness"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Witness/Area3D"]
+shape = SubResource("CapsuleShape3D_qqgsq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Witness/Area3D"]
+mesh = SubResource("CapsuleMesh_c3vla")
+skeleton = NodePath("../..")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Witness"]
+stream = ExtResource("12_ubdce")
+
 [connection signal="body_shape_entered" from="CharacterBody3D2/Collider" to="CharacterBody3D2/Collider" method="_on_body_shape_entered"]
+[connection signal="area_shape_exited" from="Witness/Area3D" to="Witness" method="_on_area_3d_area_shape_exited"]
+[connection signal="body_entered" from="Witness/Area3D" to="Witness" method="_on_area_3d_body_entered"]

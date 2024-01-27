@@ -20,7 +20,7 @@ func _input(event: InputEvent) -> void:
 		
 		player.pickedUpItem.set_freeze_enabled(false)
 		player.pickedUpItem.set_max_contacts_reported(previousContactsReported)
-		player.pickedUpItem.apply_central_impulse((player.mesh.transform.basis.z*forwardThrowMultiplier) + (player.mesh.transform.basis.y*upwardThrowMultiplier))
+		player.pickedUpItem.apply_central_impulse((player.transform.basis.z*forwardThrowMultiplier) + (player.transform.basis.y*upwardThrowMultiplier))
 		var sizeMultiplier : float = 1
 		
 		if player.pickedUpItem.is_in_group("Big"):

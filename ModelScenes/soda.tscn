@@ -4,8 +4,8 @@
 bounce = 0.74
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_oofn7"]
-height = 0.221693
-radius = 0.121667
+height = 0.454766
+radius = 0.22379
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s6d5g"]
 resource_name = "Material.011"
@@ -136,7 +136,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.113882, 0)
 shape = SubResource("CylinderShape3D_oofn7")
 
 [node name="Sketchfab_model" type="Node3D" parent="RigidBody3D"]
-transform = Transform3D(9.86, 0, 0, 0, -4.30994e-07, 9.86, 0, -9.86, -4.30994e-07, 0, 0.113882, 0)
+transform = Transform3D(16.555, 0, 0, 0, -7.23642e-07, 16.555, 0, -16.555, -7.23642e-07, 0, 0.113882, 0)
 
 [node name="bd61cf9f5eac45bcb6f526bf0abac6b7_fbx" type="Node3D" parent="RigidBody3D/Sketchfab_model"]
 transform = Transform3D(0.01, 0, 0, 0, 0, -0.01, 0, 0.01, 0, 0, 0, 0)
