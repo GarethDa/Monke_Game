@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2ofwqt0mbycd"]
+[gd_scene load_steps=16 format=3 uid="uid://d2ofwqt0mbycd"]
 
+[ext_resource type="Texture2D" uid="uid://dl7lox368iy4l" path="res://icon.svg" id="1_lp4df"]
 [ext_resource type="Script" path="res://CameraController.gd" id="1_mdf0j"]
 [ext_resource type="Script" path="res://ExcludePlayer.gd" id="2_72hni"]
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="2_tk8ew"]
@@ -17,11 +18,24 @@ sky_material = SubResource("ProceduralSkyMaterial_s1vdb")
 background_mode = 2
 sky = SubResource("Sky_i4yqs")
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_gr3ha"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_evag3"]
+albedo_texture = ExtResource("1_lp4df")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ua82w"]
+size = Vector3(50, 0.606445, 50)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f5q0g"]
+height = 1.75
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uxd3r"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1qt64"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_booxs"]
+size = Vector3(3, 3, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cprmm"]
+size = Vector3(3, 3, 3)
 
 [node name="Node3D" type="Node3D"]
 
@@ -30,13 +44,14 @@ environment = SubResource("Environment_6ysw2")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0849094, -0.0158691, -1.7008)
+material_override = SubResource("StandardMaterial3D_evag3")
 size = Vector3(121.912, 0.0141602, 131.826)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
-shape = SubResource("WorldBoundaryShape3D_gr3ha")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, -0.180908, 1.7008)
+shape = SubResource("BoxShape3D_ua82w")
 
 [node name="Mesh" parent="." instance=ExtResource("4_rs26s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 0)
@@ -44,9 +59,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 0)
 [node name="CharacterBody3D2" type="CharacterBody3D" parent="." node_paths=PackedStringArray("camera", "cameraOrigin", "mesh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 0)
 script = ExtResource("2_tk8ew")
+maxSpeed = 20.0
+jumpVelocity = 17.0
 camera = NodePath("Node3D/SpringArm3D/Camera3D")
 cameraOrigin = NodePath("Node3D")
 mesh = NodePath("../Mesh")
+gravityScale = 4.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D2"]
 shape = SubResource("CapsuleShape3D_f5q0g")
@@ -59,14 +77,33 @@ update_scale = false
 [node name="Node3D" type="Node3D" parent="CharacterBody3D2" node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.785, 0)
 script = ExtResource("1_mdf0j")
+sensitivityX = -0.2
+sensitivityY = 0.2
 player = NodePath("..")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D2/Node3D" node_paths=PackedStringArray("playerExclude")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 shape = SubResource("SphereShape3D_uxd3r")
-spring_length = 10.0
+spring_length = 4.0
 script = ExtResource("2_72hni")
 playerExclude = NodePath("../../../Mesh")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D2/Node3D/SpringArm3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6232, 0, -15.1496)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6232, 0, 9.61386)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.90398, 9)
+mass = 0.01
+physics_material_override = SubResource("PhysicsMaterial_1qt64")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_booxs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("BoxMesh_cprmm")
+skeleton = NodePath("../../Throwable")
+
+[node name="Throwable" type="Node3D" parent="." groups=["Throwable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 9)
+
+[node name="Throwables" type="Node3D" parent="."]

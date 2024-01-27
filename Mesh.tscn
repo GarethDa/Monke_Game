@@ -5,6 +5,7 @@ albedo_color = Color(1, 0.188235, 1, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hyvhe"]
 material = SubResource("StandardMaterial3D_n0w5i")
+height = 1.75
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpips"]
 albedo_color = Color(0.596078, 0.521569, 1, 1)
