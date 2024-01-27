@@ -6,7 +6,10 @@
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="2_tk8ew"]
 [ext_resource type="Script" path="res://PickUpItem.gd" id="4_bnqwb"]
 [ext_resource type="PackedScene" uid="uid://b6rlty13qynne" path="res://Mesh.tscn" id="4_rs26s"]
-[ext_resource type="Script" path="res://Throwable.gd" id="7_p8cgo"]
+[ext_resource type="PackedScene" uid="uid://cncejo5un6p3h" path="res://ModelScenes/bottle.tscn" id="8_hcwkt"]
+[ext_resource type="PackedScene" uid="uid://cuhdts7mmxg0l" path="res://ModelScenes/chair.tscn" id="9_glr0p"]
+[ext_resource type="PackedScene" uid="uid://20pyfxdita1h" path="res://ModelScenes/soda.tscn" id="10_siawf"]
+[ext_resource type="PackedScene" uid="uid://ct4wkktxky4vf" path="res://ModelScenes/table.tscn" id="11_1wudt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s1vdb"]
 sky_top_color = Color(0.247059, 0.462745, 0.670588, 1)
@@ -34,13 +37,6 @@ height = 1.75
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uxd3r"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1qt64"]
-bounce = 0.35
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_booxs"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_cprmm"]
-
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -61,7 +57,7 @@ shape = SubResource("BoxShape3D_ua82w")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 0)
 
 [node name="HeldItem" type="RemoteTransform3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.825, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03, 0)
 
 [node name="CharacterBody3D2" type="CharacterBody3D" parent="." node_paths=PackedStringArray("camera", "cameraOrigin", "mesh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 0)
@@ -106,16 +102,18 @@ playerExclude = NodePath("../../../Mesh")
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D2/Node3D/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6232, 0, 9.61386)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Throwable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.90398, 9)
-physics_material_override = SubResource("PhysicsMaterial_1qt64")
-script = ExtResource("7_p8cgo")
+[node name="Node3D" type="Node3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-shape = SubResource("BoxShape3D_booxs")
+[node name="Bottle" parent="." instance=ExtResource("8_hcwkt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.70351, 1.19666, 3.19871)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
-mesh = SubResource("BoxMesh_cprmm")
-skeleton = NodePath("")
+[node name="Chair" parent="." instance=ExtResource("9_glr0p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54573, 1.53141, 4.43403)
+
+[node name="Soda" parent="." instance=ExtResource("10_siawf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61706, 2.12607, 0)
+
+[node name="Table" parent="." instance=ExtResource("11_1wudt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 0)
 
 [connection signal="body_shape_entered" from="CharacterBody3D2/Collider" to="CharacterBody3D2/Collider" method="_on_body_shape_entered"]

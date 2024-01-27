@@ -88,7 +88,7 @@ func _physics_process(delta):
 	for i in get_slide_collision_count():
 		var c = get_slide_collision(i)
 		if c.get_collider() is RigidBody3D:
-			if c.get_collider() == pickedUpItem:
+			if c.get_collider().is_in_group("Collected"):
 				return
 			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
 
