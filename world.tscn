@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2ofwqt0mbycd"]
+[gd_scene load_steps=13 format=3 uid="uid://d2ofwqt0mbycd"]
 
 [ext_resource type="Script" path="res://CameraController.gd" id="1_mdf0j"]
 [ext_resource type="Script" path="res://ExcludePlayer.gd" id="2_72hni"]
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="2_tk8ew"]
 [ext_resource type="PackedScene" uid="uid://b6rlty13qynne" path="res://Mesh.tscn" id="4_rs26s"]
+[ext_resource type="Script" path="res://TextGeneration.gd" id="5_7712x"]
+[ext_resource type="Texture2D" uid="uid://yt81k217u6td" path="res://normalSpeech.png" id="5_n7y65"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_gr3ha"]
 
@@ -882,3 +884,26 @@ playerExclude = NodePath("../../../Mesh")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D2/Node3D/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6232, 0, -15.1496)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.404921, 0, 0, 0, 0.3506, 0, 0, 0, 1, 0, 4.93814, 0)
+billboard = 1
+texture = ExtResource("5_n7y65")
+
+[node name="Label3D" type="Label3D" parent="Sprite3D" node_paths=PackedStringArray("speechBubble")]
+sorting_offset = 1.0
+billboard = 1
+render_priority = 2
+outline_render_priority = 1
+modulate = Color(0.14902, 0.498039, 0.352941, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "
+"
+font_size = 120
+autowrap_mode = 2
+justification_flags = 162
+width = 10.0
+script = ExtResource("5_7712x")
+textSpeed = 10
+stayTime = 4.0
+speechBubble = NodePath("..")
