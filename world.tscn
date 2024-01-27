@@ -38,10 +38,8 @@ height = 1.75
 bounce = 0.35
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_booxs"]
-size = Vector3(3, 3, 3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_cprmm"]
-size = Vector3(3, 3, 3)
 
 [node name="Node3D" type="Node3D"]
 
@@ -62,6 +60,9 @@ shape = SubResource("BoxShape3D_ua82w")
 [node name="Mesh" parent="." instance=ExtResource("4_rs26s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 0)
 
+[node name="HeldItem" type="RemoteTransform3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499567, 1.35219)
+
 [node name="CharacterBody3D2" type="CharacterBody3D" parent="." node_paths=PackedStringArray("camera", "cameraOrigin", "mesh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 0)
 script = ExtResource("2_tk8ew")
@@ -72,9 +73,10 @@ cameraOrigin = NodePath("Node3D")
 mesh = NodePath("../Mesh")
 gravityScale = 4.0
 
-[node name="Collider" type="Area3D" parent="CharacterBody3D2" node_paths=PackedStringArray("player")]
+[node name="Collider" type="Area3D" parent="CharacterBody3D2" node_paths=PackedStringArray("player", "heldItemTransform")]
 script = ExtResource("4_bnqwb")
 player = NodePath("..")
+heldItemTransform = NodePath("../../Mesh/HeldItem")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterBody3D2/Collider"]
 shape = SubResource("CapsuleShape3D_t7wf1")
@@ -103,8 +105,6 @@ playerExclude = NodePath("../../../Mesh")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D2/Node3D/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6232, 0, 9.61386)
-
-[node name="HeldItem" type="RemoteTransform3D" parent="CharacterBody3D2"]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Throwable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.90398, 9)
