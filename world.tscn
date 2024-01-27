@@ -1,11 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://d2ofwqt0mbycd"]
+[gd_scene load_steps=20 format=3 uid="uid://d2ofwqt0mbycd"]
 
 [ext_resource type="Texture2D" uid="uid://dl7lox368iy4l" path="res://icon.svg" id="1_lp4df"]
-[ext_resource type="Script" path="res://CameraController.gd" id="1_mdf0j"]
-[ext_resource type="Script" path="res://ExcludePlayer.gd" id="2_72hni"]
-[ext_resource type="Script" path="res://PlayerMovement.gd" id="2_tk8ew"]
-[ext_resource type="Script" path="res://PickUpItem.gd" id="4_bnqwb"]
+[ext_resource type="PackedScene" uid="uid://cs4220jcdxays" path="res://Character.tscn" id="3_pn38a"]
 [ext_resource type="PackedScene" uid="uid://b6rlty13qynne" path="res://Mesh.tscn" id="4_rs26s"]
+[ext_resource type="PackedScene" uid="uid://sujmjiy7ft28" path="res://ModelScenes/PaperBall.tscn" id="7_dcngu"]
 [ext_resource type="PackedScene" uid="uid://cncejo5un6p3h" path="res://ModelScenes/bottle.tscn" id="8_hcwkt"]
 [ext_resource type="PackedScene" uid="uid://cuhdts7mmxg0l" path="res://ModelScenes/chair.tscn" id="9_glr0p"]
 [ext_resource type="PackedScene" uid="uid://20pyfxdita1h" path="res://ModelScenes/soda.tscn" id="10_siawf"]
@@ -30,14 +28,6 @@ albedo_texture = ExtResource("1_lp4df")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ua82w"]
 size = Vector3(50, 0.606445, 50)
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t7wf1"]
-radius = 0.973886
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f5q0g"]
-height = 1.75
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_uxd3r"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0m1b5"]
 
@@ -71,54 +61,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 0)
 [node name="HeldItem" type="RemoteTransform3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03, 0)
 
-[node name="CharacterBody3D2" type="CharacterBody3D" parent="." node_paths=PackedStringArray("camera", "cameraOrigin", "mesh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 0)
-script = ExtResource("2_tk8ew")
-maxSpeed = 20.0
-jumpVelocity = 17.0
+[node name="CharacterBody3D2" parent="." node_paths=PackedStringArray("camera", "cameraOrigin", "mesh") instance=ExtResource("3_pn38a")]
 camera = NodePath("Node3D/SpringArm3D/Camera3D")
 cameraOrigin = NodePath("Node3D")
 mesh = NodePath("../Mesh")
-gravityScale = 4.0
 
-[node name="Collider" type="Area3D" parent="CharacterBody3D2" node_paths=PackedStringArray("player", "heldItemTransform")]
-script = ExtResource("4_bnqwb")
+[node name="Collider" parent="CharacterBody3D2" index="0" node_paths=PackedStringArray("player", "heldItemTransform")]
 player = NodePath("..")
 heldItemTransform = NodePath("../../Mesh/HeldItem")
-torqueMultiplier = 7.0
-forwardThrowMultiplier = 20.0
-upwardThrowMultiplier = 1.0
-torqueSizeMultiplier = 7.0
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterBody3D2/Collider"]
-shape = SubResource("CapsuleShape3D_t7wf1")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D2"]
-shape = SubResource("CapsuleShape3D_f5q0g")
-
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="CharacterBody3D2"]
-remote_path = NodePath("../../Mesh")
-update_rotation = false
-update_scale = false
-
-[node name="Node3D" type="Node3D" parent="CharacterBody3D2" node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.785, 0)
-script = ExtResource("1_mdf0j")
-sensitivityX = -0.2
-sensitivityY = 0.2
+[node name="Node3D" parent="CharacterBody3D2" index="3" node_paths=PackedStringArray("player")]
 player = NodePath("..")
 
-[node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D2/Node3D" node_paths=PackedStringArray("playerExclude")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-shape = SubResource("SphereShape3D_uxd3r")
-spring_length = 4.0
-script = ExtResource("2_72hni")
+[node name="SpringArm3D" parent="CharacterBody3D2/Node3D" index="0" node_paths=PackedStringArray("playerExclude")]
 playerExclude = NodePath("../../../Mesh")
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D2/Node3D/SpringArm3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6232, 0, 9.61386)
-
 [node name="Node3D" type="Node3D" parent="."]
+
+[node name="Prop_PaperBall" parent="." instance=ExtResource("7_dcngu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.464309, 2.32327)
 
 [node name="Bottle" parent="." instance=ExtResource("8_hcwkt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.70351, 1.19666, 3.19871)
@@ -179,6 +140,7 @@ skeleton = NodePath("../..")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Witness"]
 stream = ExtResource("12_ubdce")
 
-[connection signal="body_shape_entered" from="CharacterBody3D2/Collider" to="CharacterBody3D2/Collider" method="_on_body_shape_entered"]
 [connection signal="area_shape_exited" from="Witness/Area3D" to="Witness" method="_on_area_3d_area_shape_exited"]
 [connection signal="body_entered" from="Witness/Area3D" to="Witness" method="_on_area_3d_body_entered"]
+
+[editable path="CharacterBody3D2"]
