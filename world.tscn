@@ -5,6 +5,8 @@
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="2_tk8ew"]
 [ext_resource type="PackedScene" uid="uid://b6rlty13qynne" path="res://Mesh.tscn" id="4_rs26s"]
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_gr3ha"]
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s1vdb"]
 sky_top_color = Color(0.247059, 0.462745, 0.670588, 1)
 sky_horizon_color = Color(0.658824, 0.647059, 0.686275, 1)
@@ -17,32 +19,842 @@ sky_material = SubResource("ProceduralSkyMaterial_s1vdb")
 background_mode = 2
 sky = SubResource("Sky_i4yqs")
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_gr3ha"]
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f5q0g"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uxd3r"]
 
 [node name="Node3D" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_6ysw2")
+[node name="Greybox" type="Node3D" parent="."]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0849094, -0.0158691, -1.7008)
-size = Vector3(121.912, 0.0141602, 131.826)
+[node name="Pew" type="Node3D" parent="Greybox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3512, 0.273693, 21.7519)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D"]
+[node name="CSGBox3D32" type="CSGBox3D" parent="Greybox/Pew"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.383927, -0.724794)
+size = Vector3(0.369607, 1.33564, 13.3481)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/StaticBody3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew/CSGBox3D32"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew/CSGBox3D32/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
 shape = SubResource("WorldBoundaryShape3D_gr3ha")
 
+[node name="CSGBox3D18" type="CSGBox3D" parent="Greybox/Pew"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+size = Vector3(1.09123, 0.621316, 13.3231)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew/CSGBox3D18"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew/CSGBox3D18/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D38" type="CSGBox3D" parent="Greybox/Pew"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.55149, 0.383927, 0)
+size = Vector3(1.09123, 1.34466, 0.240466)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew/CSGBox3D38"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew/CSGBox3D38/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D37" type="CSGBox3D" parent="Greybox/Pew"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.56383, 0.383927, 0)
+size = Vector3(1.09123, 1.34466, 0.22008)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew/CSGBox3D37"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew/CSGBox3D37/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="Pew7" type="Node3D" parent="Greybox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3512, 0.273693, 17.0066)
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="Greybox/Pew7"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.383927, -0.724794)
+size = Vector3(0.369607, 1.33564, 13.3481)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew7/CSGBox3D32"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew7/CSGBox3D32/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Greybox/Pew7"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+size = Vector3(1.09123, 0.621316, 13.3231)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew7/CSGBox3D18"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew7/CSGBox3D18/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D38" type="CSGBox3D" parent="Greybox/Pew7"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.55149, 0.383927, 0)
+size = Vector3(1.09123, 1.34466, 0.240466)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew7/CSGBox3D38"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew7/CSGBox3D38/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D37" type="CSGBox3D" parent="Greybox/Pew7"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.56383, 0.383927, 0)
+size = Vector3(1.09123, 1.34466, 0.22008)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew7/CSGBox3D37"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew7/CSGBox3D37/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="Pew8" type="Node3D" parent="Greybox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3512, 0.273693, 11.9009)
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="Greybox/Pew8"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.383927, -0.724794)
+size = Vector3(0.369607, 1.33564, 13.3481)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew8/CSGBox3D32"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew8/CSGBox3D32/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Greybox/Pew8"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+size = Vector3(1.09123, 0.621316, 13.3231)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew8/CSGBox3D18"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew8/CSGBox3D18/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D38" type="CSGBox3D" parent="Greybox/Pew8"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.55149, 0.383927, 0)
+size = Vector3(1.09123, 1.34466, 0.240466)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew8/CSGBox3D38"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew8/CSGBox3D38/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D37" type="CSGBox3D" parent="Greybox/Pew8"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.56383, 0.383927, 0)
+size = Vector3(1.09123, 1.34466, 0.22008)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew8/CSGBox3D37"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew8/CSGBox3D37/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="Pew9" type="Node3D" parent="Greybox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3512, 0.273693, 7.00779)
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="Greybox/Pew9"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.383927, -0.724794)
+size = Vector3(0.369607, 1.33564, 13.3481)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew9/CSGBox3D32"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew9/CSGBox3D32/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Greybox/Pew9"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+size = Vector3(1.09123, 0.621316, 13.3231)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew9/CSGBox3D18"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew9/CSGBox3D18/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D38" type="CSGBox3D" parent="Greybox/Pew9"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.55149, 0.383927, 0)
+size = Vector3(1.09123, 1.34466, 0.240466)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew9/CSGBox3D38"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew9/CSGBox3D38/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D37" type="CSGBox3D" parent="Greybox/Pew9"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.56383, 0.383927, 0)
+size = Vector3(1.09123, 1.34466, 0.22008)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew9/CSGBox3D37"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew9/CSGBox3D37/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="Pew10" type="Node3D" parent="Greybox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.331, 0.273693, 2.09403)
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="Greybox/Pew10"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.383927, -0.724794)
+size = Vector3(0.369607, 1.33564, 13.3481)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew10/CSGBox3D32"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew10/CSGBox3D32/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Greybox/Pew10"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+size = Vector3(1.09123, 0.621316, 13.3231)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew10/CSGBox3D18"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew10/CSGBox3D18/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D38" type="CSGBox3D" parent="Greybox/Pew10"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.55149, 0.383927, 0)
+size = Vector3(1.09123, 1.34466, 0.240466)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew10/CSGBox3D38"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew10/CSGBox3D38/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D37" type="CSGBox3D" parent="Greybox/Pew10"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.56383, 0.383927, 0)
+size = Vector3(1.09123, 1.34466, 0.22008)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew10/CSGBox3D37"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew10/CSGBox3D37/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="Pew2" type="Node3D" parent="Greybox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3281, 0.273693, 21.7519)
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="Greybox/Pew2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.383927, -0.724794)
+size = Vector3(0.369607, 1.33564, 13.3481)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew2/CSGBox3D32"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew2/CSGBox3D32/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Greybox/Pew2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+size = Vector3(1.09123, 0.621316, 13.3231)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew2/CSGBox3D18"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew2/CSGBox3D18/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D38" type="CSGBox3D" parent="Greybox/Pew2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.55149, 0.383927, 0)
+size = Vector3(1.09123, 1.34466, 0.240466)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew2/CSGBox3D38"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew2/CSGBox3D38/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D37" type="CSGBox3D" parent="Greybox/Pew2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.56383, 0.383927, 0)
+size = Vector3(1.09123, 1.34466, 0.22008)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew2/CSGBox3D37"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew2/CSGBox3D37/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="Pew3" type="Node3D" parent="Greybox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3281, 0.273693, 16.9135)
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="Greybox/Pew3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.383927, -0.724794)
+size = Vector3(0.369607, 1.33564, 13.3481)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew3/CSGBox3D32"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew3/CSGBox3D32/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Greybox/Pew3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+size = Vector3(1.09123, 0.621316, 13.3231)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew3/CSGBox3D18"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew3/CSGBox3D18/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D38" type="CSGBox3D" parent="Greybox/Pew3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.55149, 0.383927, 0)
+size = Vector3(1.09123, 1.34466, 0.240466)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew3/CSGBox3D38"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew3/CSGBox3D38/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D37" type="CSGBox3D" parent="Greybox/Pew3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.56383, 0.383927, 0)
+size = Vector3(1.09123, 1.34466, 0.22008)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew3/CSGBox3D37"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew3/CSGBox3D37/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="Pew4" type="Node3D" parent="Greybox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3281, 0.273693, 11.9332)
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="Greybox/Pew4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.383927, -0.724794)
+size = Vector3(0.369607, 1.33564, 13.3481)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew4/CSGBox3D32"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew4/CSGBox3D32/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Greybox/Pew4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+size = Vector3(1.09123, 0.621316, 13.3231)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew4/CSGBox3D18"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew4/CSGBox3D18/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D38" type="CSGBox3D" parent="Greybox/Pew4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.55149, 0.383927, 0)
+size = Vector3(1.09123, 1.34466, 0.240466)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew4/CSGBox3D38"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew4/CSGBox3D38/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D37" type="CSGBox3D" parent="Greybox/Pew4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.56383, 0.383927, 0)
+size = Vector3(1.09123, 1.34466, 0.22008)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew4/CSGBox3D37"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew4/CSGBox3D37/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="Pew5" type="Node3D" parent="Greybox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3281, 0.273693, 6.92728)
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="Greybox/Pew5"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.383927, -0.724794)
+size = Vector3(0.369607, 1.33564, 13.3481)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew5/CSGBox3D32"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew5/CSGBox3D32/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Greybox/Pew5"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+size = Vector3(1.09123, 0.621316, 13.3231)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew5/CSGBox3D18"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew5/CSGBox3D18/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D38" type="CSGBox3D" parent="Greybox/Pew5"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.55149, 0.383927, 0)
+size = Vector3(1.09123, 1.34466, 0.240466)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew5/CSGBox3D38"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew5/CSGBox3D38/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D37" type="CSGBox3D" parent="Greybox/Pew5"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.56383, 0.383927, 0)
+size = Vector3(1.09123, 1.34466, 0.22008)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew5/CSGBox3D37"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew5/CSGBox3D37/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="Pew6" type="Node3D" parent="Greybox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3281, 0.273693, 2.08642)
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="Greybox/Pew6"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.383927, -0.724794)
+size = Vector3(0.369607, 1.33564, 13.3481)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew6/CSGBox3D32"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew6/CSGBox3D32/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Greybox/Pew6"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+size = Vector3(1.09123, 0.621316, 13.3231)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew6/CSGBox3D18"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew6/CSGBox3D18/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D38" type="CSGBox3D" parent="Greybox/Pew6"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.55149, 0.383927, 0)
+size = Vector3(1.09123, 1.34466, 0.240466)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew6/CSGBox3D38"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew6/CSGBox3D38/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D37" type="CSGBox3D" parent="Greybox/Pew6"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.56383, 0.383927, 0)
+size = Vector3(1.09123, 1.34466, 0.22008)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/Pew6/CSGBox3D37"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/Pew6/CSGBox3D37/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.183023, -0.0158691, 20.1987)
+size = Vector3(48.3049, 0.0141602, 66.0381)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2343, 5.49615, 20.2482)
+size = Vector3(2.20225, 11.0382, 65.939)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.7942, 5.49615, 20.248)
+size = Vector3(2.20225, 11.0382, 65.9395)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.297064, 5.49615, 51.5936)
+size = Vector3(2.20225, 11.0382, 48.0821)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D4/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0102892, 1.61488, 44.9657)
+size = Vector3(1.46844, 3.27565, 9.91861)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D6/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D37" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.54156, 2.45241, -10.6585)
+size = Vector3(0.616054, 4.95072, 2.89164)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D37"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D37/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D38" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.55304, 2.45241, -10.6585)
+size = Vector3(0.616054, 4.95072, 2.89164)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D38"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D38/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D39" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0614974, 2.57508, -10.7474)
+size = Vector3(0.616054, 5.19606, 6.79094)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D39"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D39/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D36" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.9662, 1.92416, 50.4566)
+size = Vector3(0.231288, 3.89423, 2.26554)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D36"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D36/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21.0578, 0.359902, 37.9219)
+size = Vector3(11.9286, 0.765702, 2.18253)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D19"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D19/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18.7922, 0.107868, 37.9219)
+size = Vector3(11.9286, 0.261635, 2.35286)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D23"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D23/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.5228, 0.464863, 37.9286)
+size = Vector3(12.2478, 0.975625, 0.256459)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D22"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D22/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.7389, 0.965403, 31.9143)
+size = Vector3(0.271223, 1.9767, 2.82027)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D20"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D20/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.7389, 0.965403, 43.9624)
+size = Vector3(0.271223, 1.9767, 2.82027)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D21"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D21/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.3649, 0.75908, 27.4546)
+size = Vector3(0.280561, 1.56406, 18.7428)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D17"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D17/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.6581, 0.75908, 27.4546)
+size = Vector3(0.280561, 1.56406, 19.2996)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D18"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D18/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.97332, 0.454912, 33.6694)
+size = Vector3(1.46844, 0.955723, 5.62288)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D11"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D11/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.19495, 0.270161, 31.7036)
+size = Vector3(0.769374, 0.586221, 0.845865)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D13"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D13/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.84203, 0.270161, 31.7036)
+size = Vector3(0.769374, 0.586221, 0.845865)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D14"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D14/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.39246, 0.270161, 31.7036)
+size = Vector3(0.769374, 0.586221, 0.845865)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D15"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D15/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.4929, 0.270161, 31.7036)
+size = Vector3(0.769374, 0.586221, 0.845865)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D16"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D16/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18.7285, 0.499181, 33.0032)
+size = Vector3(0.769374, 0.586221, 0.845865)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D24"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D24/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D25" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18.7285, 0.499181, 35.1375)
+size = Vector3(0.769374, 0.586221, 0.845865)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D25"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D25/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D26" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18.7285, 0.499181, 37.071)
+size = Vector3(0.769374, 0.586221, 0.845865)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D26"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D26/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D27" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18.7285, 0.499181, 39.0557)
+size = Vector3(0.769374, 0.586221, 0.845865)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D27"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D27/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D28" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18.7285, 0.499181, 40.9423)
+size = Vector3(0.769374, 0.586221, 0.845865)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D28"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D28/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D29" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18.7285, 0.499181, 43.0755)
+size = Vector3(0.769374, 0.586221, 0.845865)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D29"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D29/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D30" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21.1423, 0.905543, 33.0032)
+size = Vector3(0.769374, 0.586221, 0.845865)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D30"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D30/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D31" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21.1423, 0.905543, 35.1375)
+size = Vector3(0.769374, 0.586221, 0.845865)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D31"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D31/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21.1423, 0.905543, 37.071)
+size = Vector3(0.769374, 0.586221, 0.845865)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D32"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D32/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D33" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21.1423, 0.905543, 39.0557)
+size = Vector3(0.769374, 0.586221, 0.845865)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D33"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D33/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D34" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21.1423, 0.905543, 40.9423)
+size = Vector3(0.769374, 0.586221, 0.845865)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D34"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D34/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D35" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21.1423, 0.905543, 43.0755)
+size = Vector3(0.769374, 0.586221, 0.845865)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D35"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D35/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.47893, 0.464405, 33.6694)
+size = Vector3(1.46844, 0.974709, 5.62288)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D12"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D12/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.14966, 1.00147, 44.5784)
+size = Vector3(0.69369, 2.04883, 4.43636)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D7/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.13918, 1.00147, 44.5784)
+size = Vector3(0.69369, 2.04883, 4.43636)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D8"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D8/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.10325, 1.00147, 45.6427)
+size = Vector3(1.52647, 2.04883, 0.508217)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D9"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D9/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.11398, 1.00147, 45.6427)
+size = Vector3(1.52647, 2.04883, 0.508217)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D10"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D10/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.297064, 5.49615, -11.6279)
+size = Vector3(2.20225, 11.0382, 48.0821)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D5/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("WorldBoundaryShape3D_gr3ha")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6ysw2")
+
 [node name="Mesh" parent="." instance=ExtResource("4_rs26s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.992227, 33.4248)
 
 [node name="CharacterBody3D2" type="CharacterBody3D" parent="." node_paths=PackedStringArray("camera", "cameraOrigin", "mesh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.992227, 33.4248)
 script = ExtResource("2_tk8ew")
 camera = NodePath("Node3D/SpringArm3D/Camera3D")
 cameraOrigin = NodePath("Node3D")
