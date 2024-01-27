@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 # This represents the player's inertia.
 var push_force = 1
-
+var pickedUpItem : Node3D
 
 var SPEED = 0
 @export var maxSpeed = 5.0
@@ -88,6 +88,8 @@ func _physics_process(delta):
 	for i in get_slide_collision_count():
 		var c = get_slide_collision(i)
 		if c.get_collider() is RigidBody3D:
+			if c.get_collider() == pickedUpItem:
+				return
 			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
 
 

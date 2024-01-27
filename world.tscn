@@ -61,7 +61,7 @@ shape = SubResource("BoxShape3D_ua82w")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 0)
 
 [node name="HeldItem" type="RemoteTransform3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499567, 1.35219)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.825, 0)
 
 [node name="CharacterBody3D2" type="CharacterBody3D" parent="." node_paths=PackedStringArray("camera", "cameraOrigin", "mesh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 0)
