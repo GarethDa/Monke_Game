@@ -1,13 +1,21 @@
-[gd_scene load_steps=13 format=3 uid="uid://d2ofwqt0mbycd"]
+[gd_scene load_steps=14 format=3 uid="uid://d2ofwqt0mbycd"]
 
-[ext_resource type="Script" path="res://CameraController.gd" id="1_mdf0j"]
-[ext_resource type="Script" path="res://ExcludePlayer.gd" id="2_72hni"]
-[ext_resource type="Script" path="res://PlayerMovement.gd" id="2_tk8ew"]
+[ext_resource type="PackedScene" uid="uid://cs4220jcdxays" path="res://Character.tscn" id="1_7j1pg"]
 [ext_resource type="PackedScene" uid="uid://b6rlty13qynne" path="res://Mesh.tscn" id="4_rs26s"]
 [ext_resource type="Script" path="res://TextGeneration.gd" id="5_7712x"]
 [ext_resource type="Texture2D" uid="uid://yt81k217u6td" path="res://normalSpeech.png" id="5_n7y65"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_gr3ha"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u0oct"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ipwyt"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fasbj"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ywtj1"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_22y64"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s1vdb"]
 sky_top_color = Color(0.247059, 0.462745, 0.670588, 1)
@@ -21,11 +29,23 @@ sky_material = SubResource("ProceduralSkyMaterial_s1vdb")
 background_mode = 2
 sky = SubResource("Sky_i4yqs")
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f5q0g"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_uxd3r"]
-
 [node name="Node3D" type="Node3D"]
+
+[node name="CharacterBody3D2" parent="." node_paths=PackedStringArray("camera", "cameraOrigin", "mesh") instance=ExtResource("1_7j1pg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 24.6799)
+camera = NodePath("Node3D/SpringArm3D/Camera3D")
+cameraOrigin = NodePath("Node3D")
+mesh = NodePath("../Mesh")
+
+[node name="Collider" parent="CharacterBody3D2" index="0" node_paths=PackedStringArray("player", "heldItemTransform")]
+player = NodePath("..")
+heldItemTransform = NodePath("../RemoteTransform3D")
+
+[node name="Node3D" parent="CharacterBody3D2" index="3" node_paths=PackedStringArray("player")]
+player = NodePath("..")
+
+[node name="SpringArm3D" parent="CharacterBody3D2/Node3D" index="0" node_paths=PackedStringArray("playerExclude")]
+playerExclude = NodePath("../../../Mesh")
 
 [node name="Greybox" type="Node3D" parent="."]
 
@@ -459,6 +479,16 @@ size = Vector3(1.09123, 1.34466, 0.22008)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
 shape = SubResource("WorldBoundaryShape3D_gr3ha")
 
+[node name="CSGBox3D5" type="CSGBox3D" parent="Greybox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.297064, 5.49615, -11.6279)
+size = Vector3(2.20225, 11.0382, 48.0821)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D5/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
+shape = SubResource("ConvexPolygonShape3D_u0oct")
+
 [node name="CSGBox3D" type="CSGBox3D" parent="Greybox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.183023, -0.0158691, 20.1987)
 size = Vector3(48.3049, 0.0141602, 66.0381)
@@ -467,7 +497,7 @@ size = Vector3(48.3049, 0.0141602, 66.0381)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
-shape = SubResource("WorldBoundaryShape3D_gr3ha")
+shape = SubResource("ConvexPolygonShape3D_ipwyt")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Greybox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2343, 5.49615, 20.2482)
@@ -477,7 +507,7 @@ size = Vector3(2.20225, 11.0382, 65.939)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D2/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
-shape = SubResource("WorldBoundaryShape3D_gr3ha")
+shape = SubResource("ConvexPolygonShape3D_fasbj")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Greybox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.7942, 5.49615, 20.248)
@@ -487,7 +517,7 @@ size = Vector3(2.20225, 11.0382, 65.9395)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D3/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
-shape = SubResource("WorldBoundaryShape3D_gr3ha")
+shape = SubResource("ConvexPolygonShape3D_ywtj1")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Greybox"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.297064, 5.49615, 51.5936)
@@ -497,7 +527,7 @@ size = Vector3(2.20225, 11.0382, 48.0821)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D4/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
-shape = SubResource("WorldBoundaryShape3D_gr3ha")
+shape = SubResource("ConvexPolygonShape3D_22y64")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Greybox"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0102892, 1.61488, 44.9657)
@@ -839,51 +869,11 @@ size = Vector3(1.52647, 2.04883, 0.508217)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
 shape = SubResource("WorldBoundaryShape3D_gr3ha")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Greybox"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.297064, 5.49615, -11.6279)
-size = Vector3(2.20225, 11.0382, 48.0821)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D5"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D5/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
-shape = SubResource("WorldBoundaryShape3D_gr3ha")
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6ysw2")
 
 [node name="Mesh" parent="." instance=ExtResource("4_rs26s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.992227, 33.4248)
-
-[node name="CharacterBody3D2" type="CharacterBody3D" parent="." node_paths=PackedStringArray("camera", "cameraOrigin", "mesh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.992227, 33.4248)
-script = ExtResource("2_tk8ew")
-camera = NodePath("Node3D/SpringArm3D/Camera3D")
-cameraOrigin = NodePath("Node3D")
-mesh = NodePath("../Mesh")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D2"]
-shape = SubResource("CapsuleShape3D_f5q0g")
-
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="CharacterBody3D2"]
-remote_path = NodePath("../../Mesh")
-update_rotation = false
-update_scale = false
-
-[node name="Node3D" type="Node3D" parent="CharacterBody3D2" node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.785, 0)
-script = ExtResource("1_mdf0j")
-player = NodePath("..")
-
-[node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D2/Node3D" node_paths=PackedStringArray("playerExclude")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-shape = SubResource("SphereShape3D_uxd3r")
-spring_length = 10.0
-script = ExtResource("2_72hni")
-playerExclude = NodePath("../../../Mesh")
-
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D2/Node3D/SpringArm3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6232, 0, -15.1496)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 24.6799)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.404921, 0, 0, 0, 0.3506, 0, 0, 0, 1, 0, 4.93814, 0)
@@ -907,3 +897,5 @@ script = ExtResource("5_7712x")
 textSpeed = 10
 stayTime = 4.0
 speechBubble = NodePath("..")
+
+[editable path="CharacterBody3D2"]
