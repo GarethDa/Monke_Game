@@ -9,7 +9,8 @@
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u0oct"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ipwyt"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_x8wj2"]
+size = Vector3(46.6205, 1.05298, 66.4756)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fasbj"]
 
@@ -22,12 +23,12 @@ sky_top_color = Color(0.247059, 0.462745, 0.670588, 1)
 sky_horizon_color = Color(0.658824, 0.647059, 0.686275, 1)
 sky_curve = 0.121838
 
-[sub_resource type="Sky" id="Sky_i4yqs"]
+[sub_resource type="Sky" id="Sky_e3ad3"]
 sky_material = SubResource("ProceduralSkyMaterial_s1vdb")
 
 [sub_resource type="Environment" id="Environment_6ysw2"]
 background_mode = 2
-sky = SubResource("Sky_i4yqs")
+sky = SubResource("Sky_e3ad3")
 
 [node name="Node3D" type="Node3D"]
 
@@ -39,7 +40,7 @@ mesh = NodePath("../Mesh")
 
 [node name="Collider" parent="CharacterBody3D2" index="0" node_paths=PackedStringArray("player", "heldItemTransform")]
 player = NodePath("..")
-heldItemTransform = NodePath("../RemoteTransform3D")
+heldItemTransform = NodePath("../../Mesh/RemoteTransform3D")
 
 [node name="Node3D" parent="CharacterBody3D2" index="3" node_paths=PackedStringArray("player")]
 player = NodePath("..")
@@ -489,15 +490,15 @@ size = Vector3(2.20225, 11.0382, 48.0821)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
 shape = SubResource("ConvexPolygonShape3D_u0oct")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Greybox"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Greybox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.183023, -0.0158691, 20.1987)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875922, -0.511841, 1.53234)
+shape = SubResource("BoxShape3D_x8wj2")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Greybox/StaticBody3D"]
 size = Vector3(48.3049, 0.0141602, 66.0381)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Greybox/CSGBox3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Greybox/CSGBox3D/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849094, 0.0158691, 1.7008)
-shape = SubResource("ConvexPolygonShape3D_ipwyt")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Greybox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2343, 5.49615, 20.2482)
@@ -880,7 +881,7 @@ transform = Transform3D(0.404921, 0, 0, 0, 0.3506, 0, 0, 0, 1, 0, 4.93814, 0)
 billboard = 1
 texture = ExtResource("5_n7y65")
 
-[node name="Label3D" type="Label3D" parent="Sprite3D" node_paths=PackedStringArray("speechBubble")]
+[node name="Label3D" type="Label3D" parent="Sprite3D"]
 sorting_offset = 1.0
 billboard = 1
 render_priority = 2
@@ -896,6 +897,6 @@ width = 10.0
 script = ExtResource("5_7712x")
 textSpeed = 10
 stayTime = 4.0
-speechBubble = NodePath("..")
 
 [editable path="CharacterBody3D2"]
+[editable path="Mesh"]

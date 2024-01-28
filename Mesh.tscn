@@ -22,3 +22,6 @@ mesh = SubResource("CapsuleMesh_hyvhe")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0029577, 0.594691, 0.478071)
 material_override = SubResource("StandardMaterial3D_gpips")
 mesh = SubResource("BoxMesh_ldu7f")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03527, 0)

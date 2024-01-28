@@ -42,7 +42,7 @@ update_scale = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.785, 0)
 script = ExtResource("3_dj3pf")
 sensitivityX = -0.2
-sensitivityY = 0.2
+sensitivityY = -0.2
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Node3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
