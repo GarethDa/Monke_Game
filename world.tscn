@@ -1,9 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://d2ofwqt0mbycd"]
+[gd_scene load_steps=18 format=3 uid="uid://d2ofwqt0mbycd"]
 
 [ext_resource type="PackedScene" uid="uid://cs4220jcdxays" path="res://Character.tscn" id="1_7j1pg"]
 [ext_resource type="PackedScene" uid="uid://b6rlty13qynne" path="res://Mesh.tscn" id="4_rs26s"]
 [ext_resource type="Script" path="res://TextGeneration.gd" id="5_7712x"]
+[ext_resource type="PackedScene" uid="uid://bhlf18hn02c2e" path="res://hittableGuy.tscn" id="5_esl4b"]
 [ext_resource type="Texture2D" uid="uid://yt81k217u6td" path="res://normalSpeech.png" id="5_n7y65"]
+[ext_resource type="Texture2D" uid="uid://bbsgnnu1ibh8q" path="res://angrySpeech.png" id="5_va805"]
+[ext_resource type="PackedScene" uid="uid://ct4wkktxky4vf" path="res://ModelScenes/table.tscn" id="7_0rbdx"]
+[ext_resource type="Script" path="res://GameTimer.gd" id="7_ww7qq"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_gr3ha"]
 
@@ -47,6 +51,9 @@ player = NodePath("..")
 
 [node name="SpringArm3D" parent="CharacterBody3D2/Node3D" index="0" node_paths=PackedStringArray("playerExclude")]
 playerExclude = NodePath("../../../Mesh")
+
+[node name="Mesh" parent="." instance=ExtResource("4_rs26s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 24.6799)
 
 [node name="Greybox" type="Node3D" parent="."]
 
@@ -873,15 +880,13 @@ shape = SubResource("WorldBoundaryShape3D_gr3ha")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6ysw2")
 
-[node name="Mesh" parent="." instance=ExtResource("4_rs26s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 24.6799)
-
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.404921, 0, 0, 0, 0.3506, 0, 0, 0, 1, 0, 4.93814, 0)
+visible = false
 billboard = 1
 texture = ExtResource("5_n7y65")
 
-[node name="Label3D" type="Label3D" parent="Sprite3D"]
+[node name="Label3D" type="Label3D" parent="Sprite3D" node_paths=PackedStringArray("speechBubbleSprite")]
 sorting_offset = 1.0
 billboard = 1
 render_priority = 2
@@ -897,6 +902,28 @@ width = 10.0
 script = ExtResource("5_7712x")
 textSpeed = 10
 stayTime = 4.0
+speechBubbleSprite = NodePath("..")
+normalSpeech = ExtResource("5_n7y65")
+angrySpeech = ExtResource("5_va805")
+
+[node name="Node3D" parent="." instance=ExtResource("5_esl4b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00512, 0)
+
+[node name="Area3D" parent="Node3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 6)
+bigHitTimeStunned = 7.0
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("7_0rbdx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.4694, 11.1304)
+
+[node name="GameTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+script = ExtResource("7_ww7qq")
+
+[connection signal="timeout" from="GameTimer" to="Node3D/Area3D/Sprite3D/Label3D" method="gameOver" binds= [true]]
 
 [editable path="CharacterBody3D2"]
 [editable path="Mesh"]
+[editable path="Node3D"]

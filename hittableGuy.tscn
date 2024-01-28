@@ -13,8 +13,14 @@ size = Vector3(1, 3.58679, 1)
 [node name="Node3D" type="Node3D"]
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0288801, 2.85034, 6.66387)
 script = ExtResource("1_snr32")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0288801, -2.85034, -6.66387)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0288801, 5.43714, 6.66387)
+shape = SubResource("BoxShape3D_4frwk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2934, 0)

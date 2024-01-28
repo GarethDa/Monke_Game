@@ -19,18 +19,19 @@ func _process(delta: float) -> void:
 			timeLeftStunned = 0
 			ChangedAnger.emit(false)
 			return
-		totalTimeStunned += delta
+		#totalTimeStunned += delta
 	
 	pass
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if not body.is_in_group("Throwable"):
 		return
-		
-	if not body.is_in_group("Big"):
-		timeLeftStunned = bigHitTimeStunned
-		ChangedAnger.emit(true)
+	print("collided")
+	ChangedAnger.emit(true)
+	if body.is_in_group("Big"):
+		timeLeftStunned = bigHitTimeStunned	
 		print("here")
 		return
+	
 	timeLeftStunned = smallHitTimeStunned
 	pass # Replace with function body.
