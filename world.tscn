@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://d2ofwqt0mbycd"]
+[gd_scene load_steps=47 format=3 uid="uid://d2ofwqt0mbycd"]
 
 [ext_resource type="PackedScene" uid="uid://cs4220jcdxays" path="res://Character.tscn" id="1_7j1pg"]
 [ext_resource type="Script" path="res://MeshAni.gd" id="2_goceo"]
@@ -19,6 +19,15 @@
 [ext_resource type="Script" path="res://GameTimer.gd" id="7_ww7qq"]
 [ext_resource type="PackedScene" uid="uid://u8cmbublhnhw" path="res://ModelScenes/judge_stand.tscn" id="8_nxwv4"]
 [ext_resource type="PackedScene" uid="uid://bkj1no8jv5noe" path="res://ModelScenes/judge.tscn" id="10_tr18j"]
+[ext_resource type="PackedScene" uid="uid://dqi7b5ybhcvdb" path="res://shrink.tscn" id="13_jqacm"]
+[ext_resource type="PackedScene" uid="uid://ijyrmy1ep8yo" path="res://ModelScenes/jury_1.tscn" id="13_k8unu"]
+[ext_resource type="PackedScene" uid="uid://dwkf8oil75pa3" path="res://ModelScenes/jury_2.tscn" id="14_kyi31"]
+[ext_resource type="PackedScene" uid="uid://41jfk5tlwy11" path="res://ModelScenes/jury_3.tscn" id="15_0c1yg"]
+[ext_resource type="PackedScene" uid="uid://bpjy6743ufl8t" path="res://ModelScenes/jury_4.tscn" id="16_c7tpr"]
+[ext_resource type="PackedScene" uid="uid://blamw0eg62f3q" path="res://tutorial.tscn" id="20_xdkft"]
+[ext_resource type="Script" path="res://Witness.gd" id="23_sdak5"]
+[ext_resource type="PackedScene" uid="uid://dnxpjsryjbxvj" path="res://ModelScenes/prosecutor.tscn" id="24_inf0d"]
+[ext_resource type="AudioStream" uid="uid://dfixpe0u8wc4r" path="res://Sounds/Monkeys Are Coming - Coyote Hearing.mp3" id="27_8jcsu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5icq5"]
 size = Vector3(1, 2.18756, 1)
@@ -104,6 +113,9 @@ sky_material = SubResource("ProceduralSkyMaterial_s1vdb")
 background_mode = 2
 sky = SubResource("Sky_e3ad3")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_4frwk"]
+size = Vector3(1, 2.09801, 1)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Mesh" parent="." node_paths=PackedStringArray("characterBody", "animationTree", "animator") instance=ExtResource("4_rs26s")]
@@ -116,33 +128,42 @@ animator = NodePath("chimp_rigged/AnimationPlayer")
 [node name="RemoteTransform3D" parent="Mesh" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.065, 0)
 
-[node name="Skeleton3D" parent="Mesh/chimp_rigged/Armature" index="0"]
-bones/0/position = Vector3(-1.34177, 11.8104, -200.655)
-bones/0/rotation = Quaternion(-0.704491, -0.0279144, 0.0215437, 0.708837)
-bones/1/rotation = Quaternion(0.0486138, 0.0614963, -0.0054175, 0.996908)
-bones/2/rotation = Quaternion(-0.0259834, 0.00947028, 0.00515417, 0.999604)
-bones/3/rotation = Quaternion(-0.0258581, 0.00949693, 0.00471857, 0.999609)
-bones/4/rotation = Quaternion(0.0119662, -0.00994977, -0.0139253, 0.999782)
-bones/5/rotation = Quaternion(-0.141533, -0.0599889, -0.0955962, 0.983479)
-bones/7/rotation = Quaternion(-0.598044, -0.405118, 0.570137, -0.391365)
-bones/8/rotation = Quaternion(0.357283, 0.335875, -0.170614, 0.85465)
-bones/9/rotation = Quaternion(0.00945605, -0.062028, 0.303121, 0.950884)
-bones/11/rotation = Quaternion(0.595906, -0.401684, 0.577672, 0.387094)
-bones/12/rotation = Quaternion(0.335563, 0.138168, -0.0502293, 0.930475)
-bones/13/rotation = Quaternion(0.0157993, 0.0884461, -0.429737, 0.898473)
-bones/15/rotation = Quaternion(0.0732935, 0.16146, 0.980867, -0.080372)
-bones/16/rotation = Quaternion(-0.672168, -0.0364604, -0.000316228, 0.7395)
-bones/17/rotation = Quaternion(0.667271, -0.0296055, 0.0208065, 0.743936)
-bones/18/rotation = Quaternion(0.280315, -0.179909, 0.044712, 0.941837)
-bones/20/rotation = Quaternion(-0.0674924, 0.0143772, 0.996453, 0.0481575)
-bones/21/rotation = Quaternion(-0.330551, -0.0144394, 0.0391572, 0.942865)
-bones/22/rotation = Quaternion(0.687631, 0.01668, -0.00711729, 0.725834)
-bones/23/rotation = Quaternion(0.400427, 0.16947, -0.0221922, 0.900248)
+[node name="chimp_rigged" parent="Mesh" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.140845, 0)
 
-[node name="AnimationTree" parent="Mesh/chimp_rigged" index="2"]
-parameters/jumptrigger/active = false
-parameters/jumptrigger/internal_active = false
-parameters/jumptrigger/request = 0
+[node name="Skeleton3D" parent="Mesh/chimp_rigged/Armature" index="0"]
+bones/0/position = Vector3(1.29643, 13.1252, -203.842)
+bones/0/rotation = Quaternion(-0.690812, 0.0233326, -0.0237193, 0.722268)
+bones/1/rotation = Quaternion(-0.0221312, -0.0809128, -0.0300464, 0.996022)
+bones/2/rotation = Quaternion(-0.0032097, -0.0116973, 0.0145759, 0.99982)
+bones/3/rotation = Quaternion(0.00864044, -0.0118839, 0.0135551, 0.9998)
+bones/4/position = Vector3(-4.17233e-07, 42.5391, 1.9663e-06)
+bones/4/rotation = Quaternion(0.00670379, 0.00829175, -0.0166103, 0.999805)
+bones/5/position = Vector3(-3.12924e-07, 39.1502, 2.53405)
+bones/5/rotation = Quaternion(-0.0920365, 0.020293, -0.0533202, 0.99412)
+bones/6/position = Vector3(-2.38419e-06, 136.905, 8.86136)
+bones/7/position = Vector3(24.552, 36.5023, -0.449165)
+bones/7/rotation = Quaternion(-0.602602, -0.398079, 0.572826, -0.387653)
+bones/8/position = Vector3(-4.31417e-06, 50.925, -1.05956e-05)
+bones/8/rotation = Quaternion(0.218311, 0.194606, 0.146583, 0.944977)
+bones/9/position = Vector3(-1.09254e-05, 61.0466, 1.46128e-05)
+bones/9/rotation = Quaternion(0.0330747, -0.109449, 0.577396, 0.808419)
+bones/10/position = Vector3(6.06478e-06, 85.6004, 4.7013e-06)
+bones/11/rotation = Quaternion(0.564744, -0.439112, 0.553779, 0.426114)
+bones/12/position = Vector3(-5.39328e-06, 50.925, 5.64985e-06)
+bones/12/rotation = Quaternion(0.355073, -0.27381, 0.213391, 0.867995)
+bones/13/position = Vector3(3.90046e-06, 61.0449, -1.65631e-05)
+bones/13/rotation = Quaternion(0.0214252, 0.0904092, -0.472312, 0.876521)
+bones/14/position = Vector3(1.03712e-05, 85.6003, -8.047e-07)
+bones/15/rotation = Quaternion(0.055958, -0.0581824, 0.995114, -0.0568424)
+bones/16/rotation = Quaternion(-0.381078, 0.0108764, -0.0393, 0.923643)
+bones/17/rotation = Quaternion(0.51826, -0.0207167, 0.0102357, 0.854911)
+bones/18/position = Vector3(4.06534e-06, 53.8302, 4.87795e-06)
+bones/18/rotation = Quaternion(0.338888, -0.190682, 0.0292009, 0.920838)
+bones/20/rotation = Quaternion(-0.0259313, 0.269427, 0.957032, 0.104048)
+bones/21/rotation = Quaternion(-0.431696, 0.0673056, 0.0408278, 0.898578)
+bones/22/rotation = Quaternion(0.55732, 0.0766335, 0.0290942, 0.826242)
+bones/23/rotation = Quaternion(0.322503, 0.171718, -0.0356251, 0.93018)
 
 [node name="CharacterBody3D2" parent="." node_paths=PackedStringArray("camera", "cameraOrigin", "mesh") instance=ExtResource("1_7j1pg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 24.6799)
@@ -342,29 +363,263 @@ transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -5, 0, -4.37114e-08, -16.57
 
 [node name="Chairs" type="Node3D" parent="Jury"]
 
-[node name="Sketchfab_Scene" parent="Jury/Chairs" instance=ExtResource("2_u1mjq")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20.7333, 1.05885, 38.7304)
+[node name="Sketchfab_Scene" type="Node3D" parent="Jury/Chairs"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20.1661, 1.00783, 38.41)
 
-[node name="Sketchfab_Scene2" parent="Jury/Chairs" instance=ExtResource("2_u1mjq")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20.7333, 1.05885, 36.307)
+[node name="RigidBody3D" type="RigidBody3D" parent="Jury/Chairs/Sketchfab_Scene" groups=["Big", "Throwable"]]
 
-[node name="Sketchfab_Scene3" parent="Jury/Chairs" instance=ExtResource("2_u1mjq")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20.7333, 1.05885, 33.6808)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Jury/Chairs/Sketchfab_Scene/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.538697, 0)
+shape = SubResource("BoxShape3D_glakf")
 
-[node name="Sketchfab_Scene4" parent="Jury/Chairs" instance=ExtResource("2_u1mjq")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20.7333, 1.05885, 30.9085)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Jury/Chairs/Sketchfab_Scene/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58324, 0.364258)
+shape = SubResource("BoxShape3D_yrnqv")
 
-[node name="Sketchfab_Scene5" parent="Jury/Chairs" instance=ExtResource("2_u1mjq")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18.1255, 0.51174, 38.7193)
+[node name="Sketchfab_model" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene/RigidBody3D"]
+transform = Transform3D(0.48, 0, 0, 0, -2.09815e-08, 0.48, 0, -0.48, -2.09815e-08, -1.99512e-08, 0.977737, -2.09544e-08)
 
-[node name="Sketchfab_Scene6" parent="Jury/Chairs" instance=ExtResource("2_u1mjq")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18.1255, 0.51174, 36.296)
+[node name="Root" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene/RigidBody3D/Sketchfab_model"]
 
-[node name="Sketchfab_Scene7" parent="Jury/Chairs" instance=ExtResource("2_u1mjq")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18.1255, 0.51174, 33.6698)
+[node name="Plane" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene/RigidBody3D/Sketchfab_model/Root"]
 
-[node name="Sketchfab_Scene8" parent="Jury/Chairs" instance=ExtResource("2_u1mjq")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18.1255, 0.51174, 30.8974)
+[node name="Plane_0" type="MeshInstance3D" parent="Jury/Chairs/Sketchfab_Scene/RigidBody3D/Sketchfab_model/Root/Plane"]
+mesh = SubResource("ArrayMesh_ii4ca")
+skeleton = NodePath("")
+
+[node name="Shrink" parent="Jury/Chairs/Sketchfab_Scene" node_paths=PackedStringArray("toDelete", "toShrinkMesh", "RB") instance=ExtResource("13_jqacm")]
+toDelete = NodePath("..")
+toShrinkMesh = NodePath("../RigidBody3D/Sketchfab_model/Root/Plane/Plane_0")
+RB = NodePath("../RigidBody3D")
+
+[node name="Sketchfab_Scene2" type="Node3D" parent="Jury/Chairs"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20.1661, 1.00783, 36.2276)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Jury/Chairs/Sketchfab_Scene2" groups=["Big", "Throwable"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Jury/Chairs/Sketchfab_Scene2/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.538697, 0)
+shape = SubResource("BoxShape3D_glakf")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Jury/Chairs/Sketchfab_Scene2/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58324, 0.364258)
+shape = SubResource("BoxShape3D_yrnqv")
+
+[node name="Sketchfab_model" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene2/RigidBody3D"]
+transform = Transform3D(0.48, 0, 0, 0, -2.09815e-08, 0.48, 0, -0.48, -2.09815e-08, -1.99512e-08, 0.977737, -2.09544e-08)
+
+[node name="Root" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene2/RigidBody3D/Sketchfab_model"]
+
+[node name="Plane" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene2/RigidBody3D/Sketchfab_model/Root"]
+
+[node name="Plane_0" type="MeshInstance3D" parent="Jury/Chairs/Sketchfab_Scene2/RigidBody3D/Sketchfab_model/Root/Plane"]
+mesh = SubResource("ArrayMesh_ii4ca")
+skeleton = NodePath("")
+
+[node name="Shrink" parent="Jury/Chairs/Sketchfab_Scene2" node_paths=PackedStringArray("toDelete", "toShrinkMesh", "RB") instance=ExtResource("13_jqacm")]
+toDelete = NodePath("../../Sketchfab_Scene")
+toShrinkMesh = NodePath("../../Sketchfab_Scene/RigidBody3D/Sketchfab_model/Root/Plane/Plane_0")
+RB = NodePath("../../Sketchfab_Scene/RigidBody3D")
+
+[node name="Sketchfab_Scene3" type="Node3D" parent="Jury/Chairs"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20.1661, 1.00783, 33.8951)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Jury/Chairs/Sketchfab_Scene3" groups=["Big", "Throwable"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Jury/Chairs/Sketchfab_Scene3/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.538697, 0)
+shape = SubResource("BoxShape3D_glakf")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Jury/Chairs/Sketchfab_Scene3/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58324, 0.364258)
+shape = SubResource("BoxShape3D_yrnqv")
+
+[node name="Sketchfab_model" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene3/RigidBody3D"]
+transform = Transform3D(0.48, 0, 0, 0, -2.09815e-08, 0.48, 0, -0.48, -2.09815e-08, -1.99512e-08, 0.977737, -2.09544e-08)
+
+[node name="Root" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene3/RigidBody3D/Sketchfab_model"]
+
+[node name="Plane" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene3/RigidBody3D/Sketchfab_model/Root"]
+
+[node name="Plane_0" type="MeshInstance3D" parent="Jury/Chairs/Sketchfab_Scene3/RigidBody3D/Sketchfab_model/Root/Plane"]
+mesh = SubResource("ArrayMesh_ii4ca")
+skeleton = NodePath("")
+
+[node name="Shrink" parent="Jury/Chairs/Sketchfab_Scene3" node_paths=PackedStringArray("toDelete", "toShrinkMesh", "RB") instance=ExtResource("13_jqacm")]
+toDelete = NodePath("../../Sketchfab_Scene")
+toShrinkMesh = NodePath("../../Sketchfab_Scene/RigidBody3D/Sketchfab_model/Root/Plane/Plane_0")
+RB = NodePath("../../Sketchfab_Scene/RigidBody3D")
+
+[node name="Sketchfab_Scene4" type="Node3D" parent="Jury/Chairs"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20.1661, 1.00783, 31.5604)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Jury/Chairs/Sketchfab_Scene4" groups=["Big", "Throwable"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Jury/Chairs/Sketchfab_Scene4/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.538697, 0)
+shape = SubResource("BoxShape3D_glakf")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Jury/Chairs/Sketchfab_Scene4/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58324, 0.364258)
+shape = SubResource("BoxShape3D_yrnqv")
+
+[node name="Sketchfab_model" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene4/RigidBody3D"]
+transform = Transform3D(0.48, 0, 0, 0, -2.09815e-08, 0.48, 0, -0.48, -2.09815e-08, -1.99512e-08, 0.977737, -2.09544e-08)
+
+[node name="Root" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene4/RigidBody3D/Sketchfab_model"]
+
+[node name="Plane" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene4/RigidBody3D/Sketchfab_model/Root"]
+
+[node name="Plane_0" type="MeshInstance3D" parent="Jury/Chairs/Sketchfab_Scene4/RigidBody3D/Sketchfab_model/Root/Plane"]
+mesh = SubResource("ArrayMesh_ii4ca")
+skeleton = NodePath("")
+
+[node name="Shrink" parent="Jury/Chairs/Sketchfab_Scene4" node_paths=PackedStringArray("toDelete", "toShrinkMesh", "RB") instance=ExtResource("13_jqacm")]
+toDelete = NodePath("../../Sketchfab_Scene")
+toShrinkMesh = NodePath("../../Sketchfab_Scene/RigidBody3D/Sketchfab_model/Root/Plane/Plane_0")
+RB = NodePath("../../Sketchfab_Scene/RigidBody3D")
+
+[node name="Sketchfab_Scene5" type="Node3D" parent="Jury/Chairs"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18.0881, 0.537071, 38.5106)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Jury/Chairs/Sketchfab_Scene5" groups=["Big", "Throwable"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Jury/Chairs/Sketchfab_Scene5/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.538697, 0)
+shape = SubResource("BoxShape3D_glakf")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Jury/Chairs/Sketchfab_Scene5/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58324, 0.364258)
+shape = SubResource("BoxShape3D_yrnqv")
+
+[node name="Sketchfab_model" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene5/RigidBody3D"]
+transform = Transform3D(0.48, 0, 0, 0, -2.09815e-08, 0.48, 0, -0.48, -2.09815e-08, -1.99512e-08, 0.977737, -2.09544e-08)
+
+[node name="Root" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene5/RigidBody3D/Sketchfab_model"]
+
+[node name="Plane" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene5/RigidBody3D/Sketchfab_model/Root"]
+
+[node name="Plane_0" type="MeshInstance3D" parent="Jury/Chairs/Sketchfab_Scene5/RigidBody3D/Sketchfab_model/Root/Plane"]
+mesh = SubResource("ArrayMesh_ii4ca")
+skeleton = NodePath("")
+
+[node name="Shrink" parent="Jury/Chairs/Sketchfab_Scene5" node_paths=PackedStringArray("toDelete", "toShrinkMesh", "RB") instance=ExtResource("13_jqacm")]
+toDelete = NodePath("../../Sketchfab_Scene")
+toShrinkMesh = NodePath("../../Sketchfab_Scene/RigidBody3D/Sketchfab_model/Root/Plane/Plane_0")
+RB = NodePath("../../Sketchfab_Scene/RigidBody3D")
+
+[node name="Sketchfab_Scene6" type="Node3D" parent="Jury/Chairs"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18.0881, 0.537071, 36.1284)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Jury/Chairs/Sketchfab_Scene6" groups=["Big", "Throwable"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Jury/Chairs/Sketchfab_Scene6/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.538697, 0)
+shape = SubResource("BoxShape3D_glakf")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Jury/Chairs/Sketchfab_Scene6/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58324, 0.364258)
+shape = SubResource("BoxShape3D_yrnqv")
+
+[node name="Sketchfab_model" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene6/RigidBody3D"]
+transform = Transform3D(0.48, 0, 0, 0, -2.09815e-08, 0.48, 0, -0.48, -2.09815e-08, -1.99512e-08, 0.977737, -2.09544e-08)
+
+[node name="Root" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene6/RigidBody3D/Sketchfab_model"]
+
+[node name="Plane" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene6/RigidBody3D/Sketchfab_model/Root"]
+
+[node name="Plane_0" type="MeshInstance3D" parent="Jury/Chairs/Sketchfab_Scene6/RigidBody3D/Sketchfab_model/Root/Plane"]
+mesh = SubResource("ArrayMesh_ii4ca")
+skeleton = NodePath("")
+
+[node name="Shrink" parent="Jury/Chairs/Sketchfab_Scene6" node_paths=PackedStringArray("toDelete", "toShrinkMesh", "RB") instance=ExtResource("13_jqacm")]
+toDelete = NodePath("../../Sketchfab_Scene")
+toShrinkMesh = NodePath("../../Sketchfab_Scene/RigidBody3D/Sketchfab_model/Root/Plane/Plane_0")
+RB = NodePath("../../Sketchfab_Scene/RigidBody3D")
+
+[node name="Sketchfab_Scene7" type="Node3D" parent="Jury/Chairs"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18.0881, 0.537071, 33.8908)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Jury/Chairs/Sketchfab_Scene7" groups=["Big", "Throwable"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Jury/Chairs/Sketchfab_Scene7/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.538697, 0)
+shape = SubResource("BoxShape3D_glakf")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Jury/Chairs/Sketchfab_Scene7/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58324, 0.364258)
+shape = SubResource("BoxShape3D_yrnqv")
+
+[node name="Sketchfab_model" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene7/RigidBody3D"]
+transform = Transform3D(0.48, 0, 0, 0, -2.09815e-08, 0.48, 0, -0.48, -2.09815e-08, -1.99512e-08, 0.977737, -2.09544e-08)
+
+[node name="Root" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene7/RigidBody3D/Sketchfab_model"]
+
+[node name="Plane" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene7/RigidBody3D/Sketchfab_model/Root"]
+
+[node name="Plane_0" type="MeshInstance3D" parent="Jury/Chairs/Sketchfab_Scene7/RigidBody3D/Sketchfab_model/Root/Plane"]
+mesh = SubResource("ArrayMesh_ii4ca")
+skeleton = NodePath("")
+
+[node name="Shrink" parent="Jury/Chairs/Sketchfab_Scene7" node_paths=PackedStringArray("toDelete", "toShrinkMesh", "RB") instance=ExtResource("13_jqacm")]
+toDelete = NodePath("../../Sketchfab_Scene")
+toShrinkMesh = NodePath("../../Sketchfab_Scene/RigidBody3D/Sketchfab_model/Root/Plane/Plane_0")
+RB = NodePath("../../Sketchfab_Scene/RigidBody3D")
+
+[node name="Sketchfab_Scene8" type="Node3D" parent="Jury/Chairs"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18.0881, 0.537071, 31.6025)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Jury/Chairs/Sketchfab_Scene8" groups=["Big", "Throwable"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Jury/Chairs/Sketchfab_Scene8/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.538697, 0)
+shape = SubResource("BoxShape3D_glakf")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Jury/Chairs/Sketchfab_Scene8/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58324, 0.364258)
+shape = SubResource("BoxShape3D_yrnqv")
+
+[node name="Sketchfab_model" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene8/RigidBody3D"]
+transform = Transform3D(0.48, 0, 0, 0, -2.09815e-08, 0.48, 0, -0.48, -2.09815e-08, -1.99512e-08, 0.977737, -2.09544e-08)
+
+[node name="Root" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene8/RigidBody3D/Sketchfab_model"]
+
+[node name="Plane" type="Node3D" parent="Jury/Chairs/Sketchfab_Scene8/RigidBody3D/Sketchfab_model/Root"]
+
+[node name="Plane_0" type="MeshInstance3D" parent="Jury/Chairs/Sketchfab_Scene8/RigidBody3D/Sketchfab_model/Root/Plane"]
+mesh = SubResource("ArrayMesh_ii4ca")
+skeleton = NodePath("")
+
+[node name="Shrink" parent="Jury/Chairs/Sketchfab_Scene8" node_paths=PackedStringArray("toDelete", "toShrinkMesh", "RB") instance=ExtResource("13_jqacm")]
+toDelete = NodePath("../../Sketchfab_Scene")
+toShrinkMesh = NodePath("../../Sketchfab_Scene/RigidBody3D/Sketchfab_model/Root/Plane/Plane_0")
+RB = NodePath("../../Sketchfab_Scene/RigidBody3D")
+
+[node name="People" type="Node3D" parent="Jury"]
+
+[node name="jury1" parent="Jury/People" instance=ExtResource("13_k8unu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -18.173, 1.57884, 36.0941)
+
+[node name="jury2" parent="Jury/People" instance=ExtResource("14_kyi31")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -20.0819, 2.07141, 31.5599)
+
+[node name="jury7" parent="Jury/People" instance=ExtResource("13_k8unu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -19.9854, 2.14477, 38.4232)
+
+[node name="jury8" parent="Jury/People" instance=ExtResource("14_kyi31")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -17.9729, 1.61246, 33.9053)
+
+[node name="jury3" parent="Jury/People" instance=ExtResource("15_0c1yg")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -17.995, 1.62013, 38.4855)
+
+[node name="jury4" parent="Jury/People" instance=ExtResource("16_c7tpr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -20.0411, 2.09746, 33.9609)
+
+[node name="jury5" parent="Jury/People" instance=ExtResource("15_0c1yg")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -19.9994, 2.10091, 36.1991)
+
+[node name="jury6" parent="Jury/People" instance=ExtResource("16_c7tpr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -17.9768, 1.64435, 31.6486)
 
 [node name="PewDiePie" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010767, 0.0284433, -0.00143433)
@@ -648,24 +903,51 @@ transform = Transform3D(0.979134, 0, -0.203215, 0, 1, 0, 0.203215, 0, 0.979134, 
 [node name="Witness" parent="." instance=ExtResource("5_esl4b")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.92181, 40.5717)
 
-[node name="Prosecutor" parent="." instance=ExtResource("5_esl4b")]
+[node name="SpeechPos" parent="Witness" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6757, 0)
+
+[node name="Prosecutor" type="Node3D" parent="."]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -2.88183, -0.0366561, 32.966)
 
+[node name="Area3D" type="Area3D" parent="Prosecutor" groups=["Witness"]]
+script = ExtResource("23_sdak5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Prosecutor/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05676, 0)
+shape = SubResource("BoxShape3D_4frwk")
+
+[node name="prosecutor" parent="Prosecutor/Area3D" instance=ExtResource("24_inf0d")]
+
+[node name="SpeechPos" type="Node3D" parent="Prosecutor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25488, 0)
+
 [node name="GameTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 60.0
 one_shot = true
 autostart = true
 script = ExtResource("7_ww7qq")
 
+[node name="Timer" type="Timer" parent="GameTimer"]
+autostart = true
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.405955, 0.913893, 0, -0.913893, -0.405955, 0, 16.3551, -9.94631)
+
+[node name="Control" parent="." instance=ExtResource("20_xdkft")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_8jcsu")
+volume_db = -7.633
+autoplay = true
 
 [connection signal="onPlayerJump" from="CharacterBody3D2" to="Mesh" method="_on_player_on_player_jump"]
 [connection signal="ChangedAnger" from="Witness/Area3D" to="Sprite3D/Label3D" method="_on_area_3d_changed_anger"]
 [connection signal="ChangedAnger" from="Prosecutor/Area3D" to="Sprite3D/Label3D" method="_on_area_3d_changed_anger"]
+[connection signal="body_entered" from="Prosecutor/Area3D" to="Prosecutor/Area3D" method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="GameTimer/Timer" to="Control" method="setTime"]
 
 [editable path="Mesh"]
 [editable path="Mesh/chimp_rigged"]
 [editable path="CharacterBody3D2"]
 [editable path="Witness"]
-[editable path="Prosecutor"]
+[editable path="Control"]

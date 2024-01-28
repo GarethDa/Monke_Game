@@ -17,7 +17,7 @@ func _input(event: InputEvent) -> void:
 		
 		heldItemTransform.remote_path = ""
 		player.pickedUpItem.remove_from_group("Collected")
-		
+		TutorialManager.setTutorial(4)
 		player.pickedUpItem.set_freeze_enabled(false)
 		player.pickedUpItem.set_max_contacts_reported(previousContactsReported)
 		player.pickedUpItem.apply_central_impulse((player.transform.basis.z*forwardThrowMultiplier) + (player.transform.basis.y*upwardThrowMultiplier))
@@ -39,6 +39,7 @@ func setPickedUpItem(body):
 	if not body.is_in_group("Throwable"):
 		return
 	if not player.pickedUpItem:
+		TutorialManager.setTutorial(3)
 		player.pickedUpItem = body
 		heldItemTransform.remote_path = player.pickedUpItem.get_path()
 		player.pickedUpItem.set_freeze_enabled(true)
