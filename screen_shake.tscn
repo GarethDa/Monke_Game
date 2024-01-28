@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dukoyvcsve1mf"]
+
+[ext_resource type="Script" path="res://cameramotion.gd" id="1_2xu5t"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wvnjb"]
+
+[node name="screen_shake" type="Area3D"]
+script = ExtResource("1_2xu5t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("SphereShape3D_wvnjb")
+
+[node name="Camera3D" type="Camera3D" parent="."]
