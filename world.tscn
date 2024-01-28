@@ -1,9 +1,10 @@
-[gd_scene load_steps=36 format=3 uid="uid://d2ofwqt0mbycd"]
+[gd_scene load_steps=37 format=3 uid="uid://d2ofwqt0mbycd"]
 
 [ext_resource type="PackedScene" uid="uid://cs4220jcdxays" path="res://Character.tscn" id="1_7j1pg"]
 [ext_resource type="PackedScene" uid="uid://dkle8cio78axt" path="res://ModelScenes/pew.tscn" id="2_j0ksp"]
 [ext_resource type="PackedScene" uid="uid://cuhdts7mmxg0l" path="res://ModelScenes/chair.tscn" id="2_u1mjq"]
 [ext_resource type="PackedScene" uid="uid://tl2ffv2i5ld" path="res://ModelScenes/border.tscn" id="3_byvm7"]
+[ext_resource type="PackedScene" uid="uid://cup2mg1jmf4j2" path="res://pause_menu.tscn" id="3_gevag"]
 [ext_resource type="Texture2D" uid="uid://8bo28w4eqebs" path="res://Models/carpetTex.jpg" id="4_8u5ca"]
 [ext_resource type="Texture2D" uid="uid://e4mls6tri6j" path="res://Models/chair_2_0.png" id="4_ee07l"]
 [ext_resource type="PackedScene" uid="uid://b6rlty13qynne" path="res://Mesh.tscn" id="4_rs26s"]
@@ -129,6 +130,8 @@ player = NodePath("..")
 
 [node name="SpringArm3D" parent="CharacterBody3D2/Node3D" index="0" node_paths=PackedStringArray("playerExclude")]
 playerExclude = NodePath("../../../Mesh")
+
+[node name="PauseMenu" parent="CharacterBody3D2" instance=ExtResource("3_gevag")]
 
 [node name="Objects" type="Node3D" parent="."]
 
