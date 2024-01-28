@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cncejo5un6p3h"]
+[gd_scene load_steps=8 format=3 uid="uid://cncejo5un6p3h"]
 
 [ext_resource type="Texture2D" uid="uid://ne5gv7md5tea" path="res://Models/low-poly_empty_plastic_bottle_0.png" id="1_ykf22"]
 [ext_resource type="Texture2D" uid="uid://hcyr0nfjmpe6" path="res://Models/low-poly_empty_plastic_bottle_1.png" id="2_oiwur"]
+[ext_resource type="PackedScene" uid="uid://dqi7b5ybhcvdb" path="res://shrink.tscn" id="3_wcsm5"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1tm5n"]
 height = 0.719946
@@ -73,3 +74,8 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 [node name="Cylinder__0" type="MeshInstance3D" parent="RigidBody3D/Sketchfab_model/765d4efb72244765a966172b82431793_fbx/RootNode/Cylinder"]
 mesh = SubResource("ArrayMesh_2lcq2")
 skeleton = NodePath("")
+
+[node name="Shrink" parent="." node_paths=PackedStringArray("toDelete", "toShrinkMesh", "RB") instance=ExtResource("3_wcsm5")]
+toDelete = NodePath("..")
+toShrinkMesh = NodePath("../RigidBody3D/Sketchfab_model/765d4efb72244765a966172b82431793_fbx/RootNode/Cylinder/Cylinder__0")
+RB = NodePath("../RigidBody3D")

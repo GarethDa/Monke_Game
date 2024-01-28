@@ -1,4 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://20pyfxdita1h"]
+[gd_scene load_steps=13 format=3 uid="uid://20pyfxdita1h"]
+
+[ext_resource type="PackedScene" uid="uid://dqi7b5ybhcvdb" path="res://shrink.tscn" id="1_oav2n"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cp27r"]
 bounce = 0.74
@@ -157,3 +159,8 @@ skeleton = NodePath("")
 [node name="Cylinder_001_Material_016_0" type="MeshInstance3D" parent="RigidBody3D/Sketchfab_model/bd61cf9f5eac45bcb6f526bf0abac6b7_fbx/RootNode/Cylinder_001"]
 mesh = SubResource("ArrayMesh_326me")
 skeleton = NodePath("")
+
+[node name="Shrink" parent="." node_paths=PackedStringArray("toDelete", "toShrinkMesh", "RB") instance=ExtResource("1_oav2n")]
+toDelete = NodePath("..")
+toShrinkMesh = NodePath("../RigidBody3D/Sketchfab_model/bd61cf9f5eac45bcb6f526bf0abac6b7_fbx/RootNode/Cylinder_001")
+RB = NodePath("../RigidBody3D")

@@ -11,8 +11,8 @@ var gameOver : bool = false
 
 func getSensitivity():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	sensitivityX = 0.2#PlayerPrefs.get_pref("HSENS",testSensitivityX)
-	sensitivityY = 0.2#PlayerPrefs.get_pref("VSENS",testSensitivityY)
+	#sensitivityX = 0.2#PlayerPrefs.get_pref("HSENS",testSensitivityX)
+	#sensitivityY = 0.2#PlayerPrefs.get_pref("VSENS",testSensitivityY)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

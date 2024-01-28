@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://sujmjiy7ft28"]
+[gd_scene load_steps=6 format=3 uid="uid://sujmjiy7ft28"]
+
+[ext_resource type="PackedScene" uid="uid://dqi7b5ybhcvdb" path="res://shrink.tscn" id="1_sbscs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n8b2h"]
 
@@ -47,3 +49,8 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.176361, 0)
 shape = SubResource("SphereShape3D_20cqe")
+
+[node name="Shrink" parent="." node_paths=PackedStringArray("toDelete", "toShrinkMesh", "RB") instance=ExtResource("1_sbscs")]
+toDelete = NodePath("..")
+toShrinkMesh = NodePath("../RigidBody3D/Icosphere")
+RB = NodePath("../RigidBody3D")

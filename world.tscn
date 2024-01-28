@@ -99,6 +99,12 @@ sky = SubResource("Sky_e3ad3")
 
 [node name="Node3D" type="Node3D"]
 
+[node name="Mesh" parent="." instance=ExtResource("4_rs26s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 24.6799)
+
+[node name="RemoteTransform3D" parent="Mesh" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28, 0)
+
 [node name="CharacterBody3D2" parent="." node_paths=PackedStringArray("camera", "cameraOrigin", "mesh") instance=ExtResource("1_7j1pg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 24.6799)
 camera = NodePath("Node3D/SpringArm3D/Camera3D")
@@ -111,6 +117,8 @@ heldItemTransform = NodePath("../../Mesh/RemoteTransform3D")
 upwardThrowMultiplier = 3.0
 
 [node name="Node3D" parent="CharacterBody3D2" index="3" node_paths=PackedStringArray("player")]
+sensitivityX = 0.2
+sensitivityY = 0.2
 player = NodePath("..")
 
 [node name="SpringArm3D" parent="CharacterBody3D2/Node3D" index="0" node_paths=PackedStringArray("playerExclude")]
@@ -354,9 +362,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.3049
 [node name="pew17" parent="PewDiePie" instance=ExtResource("2_j0ksp")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15.8535, 0, 9.01238)
 
-[node name="Mesh" parent="." instance=ExtResource("4_rs26s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 24.6799)
-
 [node name="Greybox" type="Node3D" parent="."]
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Greybox"]
@@ -459,7 +464,7 @@ script = ExtResource("7_ww7qq")
 [connection signal="ChangedAnger" from="Witness/Area3D" to="Sprite3D/Label3D" method="_on_area_3d_changed_anger"]
 [connection signal="ChangedAnger" from="Prosecutor/Area3D" to="Sprite3D/Label3D" method="_on_area_3d_changed_anger"]
 
-[editable path="CharacterBody3D2"]
 [editable path="Mesh"]
+[editable path="CharacterBody3D2"]
 [editable path="Witness"]
 [editable path="Prosecutor"]
