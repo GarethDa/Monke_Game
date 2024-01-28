@@ -5,7 +5,7 @@ extends Node3D
 var timeLeftStunned : float = 0
 var totalTimeStunned : float
 @export var audio : AudioStreamPlayer3D
-signal ChangedAnger(angry : bool)
+signal ChangedAnger(angry : bool, username : String)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 		timeLeftStunned -= delta
 		if timeLeftStunned < 0:
 			timeLeftStunned = 0
-			ChangedAnger.emit(false)
+			ChangedAnger.emit(false, get_parent_node_3d().name)
 			return
 		#totalTimeStunned += delta
 	
@@ -27,7 +27,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if not body.is_in_group("Throwable"):
 		return
 	print("collided")
-	ChangedAnger.emit(true)
+	ChangedAnger.emit(true, get_parent_node_3d().name)
 	if body.is_in_group("Big"):
 		timeLeftStunned = bigHitTimeStunned	
 		print("here")

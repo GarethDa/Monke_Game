@@ -1,6 +1,6 @@
 extends Label3D
 
-var dialogue : Array[String]
+@export var dialogue : Array[String]
 var dialogueIndex : int
 var currentStrIndex : int = 0
 var currentScrollTime : float = 0
@@ -11,14 +11,14 @@ var paused : bool = false
 @export var speechBubbleSprite : Sprite3D
 @export var normalSpeech : Texture
 @export var angrySpeech : Texture
+@export var witnessSpeechPos : Node3D
+@export var prosecutorSpeechPos : Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	dialogue = ["AAAAAAAAAAAAAAAAAAAAA"]
 	dialogueIndex = 0
-	#currentDialogue = "this is a test, yes it is, this is just a test."
-	#nextDialogue = "this is a new test, different from the last test"
 	width = speechBubbleSprite.texture.get_width() * 2 - speechBubbleSprite.texture.get_width() * 0.25
+	speechBubbleSprite.global_position = prosecutorSpeechPos.global_position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -41,24 +41,31 @@ func _process(delta):
 				text = ""
 				dialogueIndex+=1
 				currentStrIndex = 0
+				currentStayTime = 0
+				if dialogueIndex % 2 == 0:
+					speechBubbleSprite.global_position = prosecutorSpeechPos.global_position
+				else:
+					speechBubbleSprite.global_position = witnessSpeechPos.global_position
 
 '''
 func SetNextString(nextString : String):
 	nextDialogue = nextString
 '''
 
-func _on_area_3d_changed_anger(angry):
+func _on_area_3d_changed_anger(angry, username):
 	print("set angry")
-	if angry:
-		paused = true
-		speechBubbleSprite.texture = angrySpeech
-		text = "OW!!!"
-		font_size = 240
-	else:
-		paused = false
-		speechBubbleSprite.texture = normalSpeech
-		text = dialogue[dialogueIndex].substr(0, currentStrIndex + 1)
-		font_size = 120
+	if ((username == "Prosecutor" && dialogueIndex % 2 == 0) 
+	|| (username == "Witness" && dialogueIndex % 2 == 1)):
+		if angry:
+			paused = true
+			speechBubbleSprite.texture = angrySpeech
+			text = "OW!!!"
+			font_size = 240
+		else:
+			paused = false
+			speechBubbleSprite.texture = normalSpeech
+			text = dialogue[dialogueIndex].substr(0, currentStrIndex + 1)
+			font_size = 120
 		
 func gameOver(win : bool):
 	if win:

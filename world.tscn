@@ -882,11 +882,10 @@ environment = SubResource("Environment_6ysw2")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.404921, 0, 0, 0, 0.3506, 0, 0, 0, 1, 0, 4.93814, 0)
-visible = false
 billboard = 1
 texture = ExtResource("5_n7y65")
 
-[node name="Label3D" type="Label3D" parent="Sprite3D" node_paths=PackedStringArray("speechBubbleSprite")]
+[node name="Label3D" type="Label3D" parent="Sprite3D" node_paths=PackedStringArray("speechBubbleSprite", "witnessSpeechPos", "prosecutorSpeechPos")]
 sorting_offset = 1.0
 billboard = 1
 render_priority = 2
@@ -900,21 +899,23 @@ autowrap_mode = 2
 justification_flags = 162
 width = 10.0
 script = ExtResource("5_7712x")
+dialogue = Array[String](["Where were you on the night of the incident?", "I was working at the zoo. I’m an animal handler.", "And where were you in the zoo exactly?", "I had just finished up my rounds in the bird exhibit, and was heading down to the chimpanzee enclosure.", "Did you notice anything strange at the enclosure?", "Well, as I got close I could hear that the chimps were real agitated, making all kinds of screeches and sounds. So I ran over to see what was happening.", "And what exactly did you see at the enclosure?", "Well, there was a person inside the enclosure and it was causing the animals to freak out. Somehow the gate into the enclosure was open, and that person was trying to throw bananas at the chimpanzees.", "What do you think they were trying to accomplish by throwing bananas?", "It seemed like they were trying to tame them somehow? Like as if throwing food at a creature will somehow make it loyal to you.", "Well what happened after that?", "I was kinda just staring at the scene in front of me in pure confusion. After a minute or so, one of the chimps actually did walk over to the trespasser after being hit with enough bananas.", "And what did the trespasser do with the animal?", "They just grabbed it by the hand and started walking away. At that point I guess they saw me standing there and took off.", "So this trespasser stole an animal from the zoo?", "Yes, it appears that’s what happened.", "And is the person you saw stealing the chimp in the courtroom today?", "Yes, they’re the defendant in this case.", "No further questions."])
 textSpeed = 10
 stayTime = 4.0
 speechBubbleSprite = NodePath("..")
 normalSpeech = ExtResource("5_n7y65")
 angrySpeech = ExtResource("5_va805")
-
-[node name="Node3D" parent="." instance=ExtResource("5_esl4b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00512, 0)
-
-[node name="Area3D" parent="Node3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 6)
-bigHitTimeStunned = 7.0
+witnessSpeechPos = NodePath("../../Witness/SpeechPos")
+prosecutorSpeechPos = NodePath("../../Prosecutor/SpeechPos")
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("7_0rbdx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.4694, 11.1304)
+
+[node name="Witness" parent="." instance=ExtResource("5_esl4b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.92558, 0)
+
+[node name="Prosecutor" parent="." instance=ExtResource("5_esl4b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.85545, 2.8166, 4.90806)
 
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -922,8 +923,10 @@ one_shot = true
 autostart = true
 script = ExtResource("7_ww7qq")
 
-[connection signal="timeout" from="GameTimer" to="Node3D/Area3D/Sprite3D/Label3D" method="gameOver" binds= [true]]
+[connection signal="ChangedAnger" from="Witness/Area3D" to="Sprite3D/Label3D" method="_on_area_3d_changed_anger"]
+[connection signal="ChangedAnger" from="Prosecutor/Area3D" to="Sprite3D/Label3D" method="_on_area_3d_changed_anger"]
 
 [editable path="CharacterBody3D2"]
 [editable path="Mesh"]
-[editable path="Node3D"]
+[editable path="Witness"]
+[editable path="Prosecutor"]
