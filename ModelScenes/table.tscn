@@ -78,7 +78,6 @@ skeleton = NodePath("")
 
 [node name="Shrink" parent="." node_paths=PackedStringArray("toDelete", "toShrinkMesh", "RB") instance=ExtResource("4_5wgan")]
 transform = Transform3D(1, 3.55271e-15, -3.55271e-15, -3.55271e-15, 1, 0, 3.55271e-15, -2.11758e-22, 1, -3.55271e-15, 0, 2.11758e-22)
-shrinkSpeed = 1.0
 toDelete = NodePath("..")
 toShrinkMesh = NodePath("../RigidBody3D/Sketchfab_model/ec5ecec8f8984b7e8101de40b559f83e_fbx/RootNode/Box002/Box002_Material #128 Slot #1_0")
 RB = NodePath("../RigidBody3D")
