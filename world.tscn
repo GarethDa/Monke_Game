@@ -1,10 +1,11 @@
-[gd_scene load_steps=47 format=3 uid="uid://d2ofwqt0mbycd"]
+[gd_scene load_steps=50 format=3 uid="uid://d2ofwqt0mbycd"]
 
 [ext_resource type="PackedScene" uid="uid://cs4220jcdxays" path="res://Character.tscn" id="1_7j1pg"]
 [ext_resource type="Script" path="res://MeshAni.gd" id="2_goceo"]
 [ext_resource type="PackedScene" uid="uid://dkle8cio78axt" path="res://ModelScenes/pew.tscn" id="2_j0ksp"]
 [ext_resource type="PackedScene" uid="uid://cuhdts7mmxg0l" path="res://ModelScenes/chair.tscn" id="2_u1mjq"]
 [ext_resource type="PackedScene" uid="uid://tl2ffv2i5ld" path="res://ModelScenes/border.tscn" id="3_byvm7"]
+[ext_resource type="PackedScene" path="res://pause_menu.tscn" id="3_gevag"]
 [ext_resource type="Texture2D" uid="uid://8bo28w4eqebs" path="res://Models/carpetTex.jpg" id="4_8u5ca"]
 [ext_resource type="Texture2D" uid="uid://e4mls6tri6j" path="res://Models/chair_2_0.png" id="4_ee07l"]
 [ext_resource type="PackedScene" uid="uid://b6rlty13qynne" path="res://Mesh.tscn" id="4_rs26s"]
@@ -20,13 +21,15 @@
 [ext_resource type="PackedScene" uid="uid://u8cmbublhnhw" path="res://ModelScenes/judge_stand.tscn" id="8_nxwv4"]
 [ext_resource type="PackedScene" uid="uid://bkj1no8jv5noe" path="res://ModelScenes/judge.tscn" id="10_tr18j"]
 [ext_resource type="PackedScene" uid="uid://dqi7b5ybhcvdb" path="res://shrink.tscn" id="13_jqacm"]
-[ext_resource type="PackedScene" uid="uid://ijyrmy1ep8yo" path="res://ModelScenes/jury_1.tscn" id="13_k8unu"]
-[ext_resource type="PackedScene" uid="uid://dwkf8oil75pa3" path="res://ModelScenes/jury_2.tscn" id="14_kyi31"]
-[ext_resource type="PackedScene" uid="uid://41jfk5tlwy11" path="res://ModelScenes/jury_3.tscn" id="15_0c1yg"]
-[ext_resource type="PackedScene" uid="uid://bpjy6743ufl8t" path="res://ModelScenes/jury_4.tscn" id="16_c7tpr"]
+[ext_resource type="PackedScene" path="res://ModelScenes/jury_1.tscn" id="13_k8unu"]
+[ext_resource type="PackedScene" path="res://ModelScenes/jury_2.tscn" id="14_kyi31"]
+[ext_resource type="PackedScene" path="res://ModelScenes/jury_3.tscn" id="15_0c1yg"]
+[ext_resource type="PackedScene" path="res://ModelScenes/jury_4.tscn" id="16_c7tpr"]
 [ext_resource type="PackedScene" uid="uid://blamw0eg62f3q" path="res://tutorial.tscn" id="20_xdkft"]
+[ext_resource type="PackedScene" uid="uid://0bmsseeiavy5" path="res://win_game.tscn" id="21_3hs35"]
+[ext_resource type="PackedScene" path="res://lose_game.tscn" id="22_4vl8v"]
 [ext_resource type="Script" path="res://Witness.gd" id="23_sdak5"]
-[ext_resource type="PackedScene" uid="uid://dnxpjsryjbxvj" path="res://ModelScenes/prosecutor.tscn" id="24_inf0d"]
+[ext_resource type="PackedScene" uid="uid://mv8ifwrg0wdm" path="res://ModelScenes/prosecutor.tscn" id="24_inf0d"]
 [ext_resource type="AudioStream" uid="uid://dfixpe0u8wc4r" path="res://Sounds/Monkeys Are Coming - Coyote Hearing.mp3" id="27_8jcsu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5icq5"]
@@ -132,38 +135,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.065, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.140845, 0)
 
 [node name="Skeleton3D" parent="Mesh/chimp_rigged/Armature" index="0"]
-bones/0/position = Vector3(-0.064123, 11.9039, -200.451)
-bones/0/rotation = Quaternion(-0.700593, -0.0697498, 0.042203, 0.708889)
-bones/1/rotation = Quaternion(0.0271542, 0.051652, -0.00659982, 0.998274)
-bones/2/rotation = Quaternion(-0.0249747, 0.00606276, 0.00062988, 0.999669)
-bones/3/rotation = Quaternion(-0.0249807, 0.00605299, 0.000294126, 0.99967)
-bones/4/position = Vector3(-4.17233e-07, 42.5391, 1.9663e-06)
-bones/4/rotation = Quaternion(0.0505271, 0.0164589, -0.0488002, 0.997394)
-bones/5/position = Vector3(-3.12924e-07, 39.1502, 2.53405)
-bones/5/rotation = Quaternion(-0.165348, -0.0312998, -0.0657859, 0.983541)
-bones/6/position = Vector3(-2.38419e-06, 136.905, 8.86136)
-bones/7/position = Vector3(24.552, 36.5023, -0.449165)
-bones/7/rotation = Quaternion(-0.613243, -0.38599, 0.577331, -0.376344)
-bones/8/position = Vector3(-4.31417e-06, 50.925, -1.05956e-05)
-bones/8/rotation = Quaternion(0.232095, 0.283454, -0.0653114, 0.928181)
-bones/9/position = Vector3(-1.09254e-05, 61.0466, 1.46128e-05)
-bones/9/rotation = Quaternion(0.00941461, -0.0647168, 0.309179, 0.948753)
-bones/10/position = Vector3(6.06478e-06, 85.6004, 4.7013e-06)
-bones/11/rotation = Quaternion(0.585674, -0.415849, 0.565988, 0.404614)
-bones/12/position = Vector3(-5.39328e-06, 50.925, 5.64985e-06)
-bones/12/rotation = Quaternion(0.322178, 0.128244, 0.0384338, 0.937165)
-bones/13/position = Vector3(3.90046e-06, 61.0449, -1.65631e-05)
-bones/13/rotation = Quaternion(0.0176718, 0.0948307, -0.460117, 0.882603)
-bones/14/position = Vector3(1.03712e-05, 85.6003, -8.047e-07)
-bones/15/rotation = Quaternion(0.0631106, 0.196489, 0.973351, -0.0999843)
-bones/16/rotation = Quaternion(-0.637633, -0.0644411, -0.0265369, 0.767181)
-bones/17/rotation = Quaternion(0.661579, -0.0321669, 0.0226031, 0.748844)
-bones/18/position = Vector3(4.06534e-06, 53.8302, 4.87795e-06)
-bones/18/rotation = Quaternion(0.275357, -0.18529, 0.0441669, 0.942282)
-bones/20/rotation = Quaternion(-0.0660391, -0.0155344, 0.99691, 0.0396021)
-bones/21/rotation = Quaternion(-0.288094, -0.0361509, 0.0380522, 0.956163)
-bones/22/rotation = Quaternion(0.65099, 0.00607973, -0.00107108, 0.759061)
-bones/23/rotation = Quaternion(0.418769, 0.160053, -0.0213099, 0.893623)
+bones/0/position = Vector3(0.920972, 12.0772, -199.098)
+bones/0/rotation = Quaternion(-0.695266, 0.00447107, 0.0023455, 0.718735)
+bones/1/rotation = Quaternion(0.0215028, -0.0101427, -0.0238282, 0.999433)
+bones/2/rotation = Quaternion(-0.0186444, -0.000727018, 0.00961443, 0.99978)
+bones/3/rotation = Quaternion(-0.0177628, -0.000596655, 0.0100075, 0.999792)
+bones/4/rotation = Quaternion(0.00309851, 0.00248252, -0.0116489, 0.999924)
+bones/5/rotation = Quaternion(-0.102873, -0.00688146, -0.0346942, 0.994065)
+bones/7/rotation = Quaternion(-0.605545, -0.393803, 0.581339, -0.374539)
+bones/8/rotation = Quaternion(0.22881, 0.337776, -0.000304963, 0.912991)
+bones/9/rotation = Quaternion(0.0271301, -0.090185, 0.496983, 0.862635)
+bones/11/rotation = Quaternion(0.58642, -0.414113, 0.569515, 0.400343)
+bones/12/rotation = Quaternion(0.363979, -0.111591, 0.171943, 0.908571)
+bones/13/rotation = Quaternion(0.0194264, 0.0874804, -0.451347, 0.887838)
+bones/15/rotation = Quaternion(0.0499519, -0.0611204, 0.9963, -0.0340064)
+bones/16/rotation = Quaternion(-0.64513, -0.0266162, -0.0352492, 0.762795)
+bones/17/rotation = Quaternion(0.695067, -0.020326, 0.0230967, 0.718286)
+bones/18/rotation = Quaternion(0.269624, -0.184497, 0.0454352, 0.944033)
+bones/20/rotation = Quaternion(-0.0329793, 0.188242, 0.979783, 0.0591797)
+bones/21/rotation = Quaternion(-0.289014, 0.0563153, 0.0322086, 0.955124)
+bones/22/rotation = Quaternion(0.573783, 0.0407119, 0.00174924, 0.817993)
+bones/23/rotation = Quaternion(0.300428, 0.171607, -0.0397898, 0.937396)
 
 [node name="CharacterBody3D2" parent="." node_paths=PackedStringArray("camera", "cameraOrigin", "mesh") instance=ExtResource("1_7j1pg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 24.6799)
@@ -193,6 +185,8 @@ playerExclude = NodePath("../../../Mesh/chimp_rigged/Armature/Skeleton3D/Roundcu
 
 [node name="Camera3D" parent="CharacterBody3D2/Node3D/SpringArm3D" index="0"]
 current = true
+
+[node name="PauseMenu" parent="CharacterBody3D2" instance=ExtResource("3_gevag")]
 
 [node name="Objects" type="Node3D" parent="."]
 
@@ -876,7 +870,7 @@ transform = Transform3D(0.404921, 0, 0, 0, 0.3506, 0, 0, 0, 1, 0, 4.93814, 0)
 billboard = 1
 texture = ExtResource("5_n7y65")
 
-[node name="Label3D" type="Label3D" parent="Sprite3D" node_paths=PackedStringArray("speechBubbleSprite", "witnessSpeechPos", "prosecutorSpeechPos")]
+[node name="Label3D" type="Label3D" parent="Sprite3D" node_paths=PackedStringArray("speechBubbleSprite", "witnessSpeechPos", "prosecutorSpeechPos", "winScreen", "loseScreen")]
 sorting_offset = 1.0
 billboard = 1
 render_priority = 2
@@ -891,13 +885,15 @@ justification_flags = 162
 width = 10.0
 script = ExtResource("5_7712x")
 dialogue = Array[String](["Where were you on the night of the incident?", "I was working at the zoo. I’m an animal handler.", "And where were you in the zoo exactly?", "I had just finished up my rounds in the bird exhibit, and was heading down to the chimpanzee enclosure.", "Did you notice anything strange at the enclosure?", "Well, as I got close I could hear that the chimps were real agitated, making all kinds of screeches and sounds. So I ran over to see what was happening.", "And what exactly did you see at the enclosure?", "Well, there was a person inside the enclosure and it was causing the animals to freak out. Somehow the gate into the enclosure was open, and that person was trying to throw bananas at the chimpanzees.", "What do you think they were trying to accomplish by throwing bananas?", "It seemed like they were trying to tame them somehow? Like as if throwing food at a creature will somehow make it loyal to you.", "Well what happened after that?", "I was kinda just staring at the scene in front of me in pure confusion. After a minute or so, one of the chimps actually did walk over to the trespasser after being hit with enough bananas.", "And what did the trespasser do with the animal?", "They just grabbed it by the hand and started walking away. At that point I guess they saw me standing there and took off.", "So this trespasser stole an animal from the zoo?", "Yes, it appears that’s what happened.", "And is the person you saw stealing the chimp in the courtroom today?", "Yes, they’re the defendant in this case.", "No further questions."])
-textSpeed = 10
-stayTime = 4.0
+textSpeed = 30
+stayTime = 3.0
 speechBubbleSprite = NodePath("..")
 normalSpeech = ExtResource("5_n7y65")
 angrySpeech = ExtResource("5_va805")
 witnessSpeechPos = NodePath("../../Witness/SpeechPos")
 prosecutorSpeechPos = NodePath("../../Prosecutor/SpeechPos")
+winScreen = NodePath("../../Control/WinGame")
+loseScreen = NodePath("../../Control/LoseGame")
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("7_0rbdx")]
 transform = Transform3D(0.589831, 0, 0.807527, 0, 1, 0, -0.807527, 0, 0.589831, 16.4736, 0.25792, 39.6167)
@@ -908,6 +904,10 @@ transform = Transform3D(0.979134, 0, -0.203215, 0, 1, 0, 0.203215, 0, 0.979134, 
 [node name="Witness" parent="." instance=ExtResource("5_esl4b")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.92181, 40.5717)
 
+[node name="Area3D" parent="Witness" index="0"]
+smallHitTimeStunned = 1.0
+bigHitTimeStunned = 2.0
+
 [node name="SpeechPos" parent="Witness" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6757, 0)
 
@@ -916,6 +916,8 @@ transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -2.88183
 
 [node name="Area3D" type="Area3D" parent="Prosecutor" groups=["Witness"]]
 script = ExtResource("23_sdak5")
+smallHitTimeStunned = 1.0
+bigHitTimeStunned = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Prosecutor/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05676, 0)
@@ -927,8 +929,7 @@ shape = SubResource("BoxShape3D_4frwk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25488, 0)
 
 [node name="GameTimer" type="Timer" parent="."]
-wait_time = 60.0
-one_shot = true
+wait_time = 100.0
 autostart = true
 script = ExtResource("7_ww7qq")
 
@@ -940,15 +941,22 @@ transform = Transform3D(1, 0, 0, 0, -0.405955, 0.913893, 0, -0.913893, -0.405955
 
 [node name="Control" parent="." instance=ExtResource("20_xdkft")]
 
+[node name="WinGame" parent="Control" instance=ExtResource("21_3hs35")]
+layout_mode = 1
+
+[node name="LoseGame" parent="Control" instance=ExtResource("22_4vl8v")]
+layout_mode = 1
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("27_8jcsu")
-volume_db = -7.633
+volume_db = -19.083
 autoplay = true
 
 [connection signal="onPlayerJump" from="CharacterBody3D2" to="Mesh" method="_on_player_on_player_jump"]
 [connection signal="ChangedAnger" from="Witness/Area3D" to="Sprite3D/Label3D" method="_on_area_3d_changed_anger"]
 [connection signal="ChangedAnger" from="Prosecutor/Area3D" to="Sprite3D/Label3D" method="_on_area_3d_changed_anger"]
 [connection signal="body_entered" from="Prosecutor/Area3D" to="Prosecutor/Area3D" method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="GameTimer" to="Sprite3D/Label3D" method="gameOver" binds= [true]]
 [connection signal="timeout" from="GameTimer/Timer" to="Control" method="setTime"]
 
 [editable path="Mesh"]

@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnxpjsryjbxvj"]
+[gd_scene load_steps=6 format=3 uid="uid://mv8ifwrg0wdm"]
 
-[ext_resource type="Texture2D" uid="uid://jmj6clfq5r03" path="res://Models/prosecutor_prosecutor.png" id="1_vr3lg"]
+[ext_resource type="Texture2D" path="res://Models/prosecutor_prosecutor.png" id="1_vr3lg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mn12x"]
 resource_name = "Material.001"

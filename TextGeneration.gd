@@ -21,6 +21,8 @@ func _ready():
 	dialogueIndex = 0
 	width = speechBubbleSprite.texture.get_width() * 2 - speechBubbleSprite.texture.get_width() * 0.25
 	speechBubbleSprite.global_position = prosecutorSpeechPos.global_position
+	winScreen.visible = false
+	loseScreen.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -73,7 +75,6 @@ func gameOver(win : bool):
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if win:
 		winScreen.visible = true
-		
 		print("WIN")
 		return
 	loseScreen.visible = true
