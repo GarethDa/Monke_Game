@@ -121,6 +121,14 @@ size = Vector3(1, 2.09801, 1)
 
 [node name="Node3D" type="Node3D"]
 
+[node name="Control" parent="." instance=ExtResource("20_xdkft")]
+
+[node name="WinGame" parent="Control" instance=ExtResource("21_3hs35")]
+layout_mode = 1
+
+[node name="LoseGame" parent="Control" instance=ExtResource("22_4vl8v")]
+layout_mode = 1
+
 [node name="Mesh" parent="." node_paths=PackedStringArray("characterBody", "animationTree", "animator") instance=ExtResource("4_rs26s")]
 transform = Transform3D(0.71, 0, 0, 0, 0.71, 0, 0, 0, 0.71, 0, 1.46886, 24.6799)
 script = ExtResource("2_goceo")
@@ -135,27 +143,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.065, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.140845, 0)
 
 [node name="Skeleton3D" parent="Mesh/chimp_rigged/Armature" index="0"]
-bones/0/position = Vector3(0.920972, 12.0772, -199.098)
-bones/0/rotation = Quaternion(-0.695266, 0.00447107, 0.0023455, 0.718735)
-bones/1/rotation = Quaternion(0.0215028, -0.0101427, -0.0238282, 0.999433)
-bones/2/rotation = Quaternion(-0.0186444, -0.000727018, 0.00961443, 0.99978)
-bones/3/rotation = Quaternion(-0.0177628, -0.000596655, 0.0100075, 0.999792)
-bones/4/rotation = Quaternion(0.00309851, 0.00248252, -0.0116489, 0.999924)
-bones/5/rotation = Quaternion(-0.102873, -0.00688146, -0.0346942, 0.994065)
-bones/7/rotation = Quaternion(-0.605545, -0.393803, 0.581339, -0.374539)
-bones/8/rotation = Quaternion(0.22881, 0.337776, -0.000304963, 0.912991)
-bones/9/rotation = Quaternion(0.0271301, -0.090185, 0.496983, 0.862635)
-bones/11/rotation = Quaternion(0.58642, -0.414113, 0.569515, 0.400343)
-bones/12/rotation = Quaternion(0.363979, -0.111591, 0.171943, 0.908571)
-bones/13/rotation = Quaternion(0.0194264, 0.0874804, -0.451347, 0.887838)
-bones/15/rotation = Quaternion(0.0499519, -0.0611204, 0.9963, -0.0340064)
-bones/16/rotation = Quaternion(-0.64513, -0.0266162, -0.0352492, 0.762795)
-bones/17/rotation = Quaternion(0.695067, -0.020326, 0.0230967, 0.718286)
-bones/18/rotation = Quaternion(0.269624, -0.184497, 0.0454352, 0.944033)
-bones/20/rotation = Quaternion(-0.0329793, 0.188242, 0.979783, 0.0591797)
-bones/21/rotation = Quaternion(-0.289014, 0.0563153, 0.0322086, 0.955124)
-bones/22/rotation = Quaternion(0.573783, 0.0407119, 0.00174924, 0.817993)
-bones/23/rotation = Quaternion(0.300428, 0.171607, -0.0397898, 0.937396)
+bones/0/position = Vector3(3.15188, 8.37515, -199.117)
+bones/0/rotation = Quaternion(-0.693622, 0.000446335, 0.000452776, 0.720339)
+bones/1/rotation = Quaternion(0.00167242, -0.0404779, -0.0353513, 0.998554)
+bones/2/rotation = Quaternion(-0.0108021, -0.00467001, 0.00919984, 0.999888)
+bones/3/rotation = Quaternion(-0.00609924, -0.00455475, 0.00884378, 0.999932)
+bones/4/rotation = Quaternion(0.033218, 0.0304065, -0.0463583, 0.997909)
+bones/5/rotation = Quaternion(-0.161669, 0.00718539, -0.0478358, 0.985659)
+bones/7/rotation = Quaternion(-0.619622, -0.372826, 0.592544, -0.35491)
+bones/8/rotation = Quaternion(0.270814, 0.157144, 0.109404, 0.943396)
+bones/9/rotation = Quaternion(0.0211769, -0.0937676, 0.46568, 0.879717)
+bones/11/rotation = Quaternion(0.580452, -0.420361, 0.567815, 0.404917)
+bones/12/rotation = Quaternion(0.414573, -0.138883, 0.209379, 0.874644)
+bones/13/rotation = Quaternion(0.015733, 0.0862028, -0.422945, 0.901908)
+bones/15/rotation = Quaternion(0.0349599, -0.0503922, 0.997356, -0.0389838)
+bones/16/rotation = Quaternion(-0.581844, -0.014463, -0.0416819, 0.812103)
+bones/17/rotation = Quaternion(0.636559, -0.0290455, 0.00935787, 0.770624)
+bones/18/rotation = Quaternion(0.267193, -0.184419, 0.0458986, 0.944717)
+bones/20/rotation = Quaternion(-0.017288, 0.202256, 0.975816, 0.0810997)
+bones/21/rotation = Quaternion(-0.191984, 0.0571288, 0.0293964, 0.979293)
+bones/22/rotation = Quaternion(0.492156, 0.0648858, 0.0313731, 0.867518)
+bones/23/rotation = Quaternion(0.318728, 0.171696, -0.0366287, 0.931446)
 
 [node name="CharacterBody3D2" parent="." node_paths=PackedStringArray("camera", "cameraOrigin", "mesh") instance=ExtResource("1_7j1pg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 24.6799)
@@ -416,9 +424,9 @@ mesh = SubResource("ArrayMesh_ii4ca")
 skeleton = NodePath("")
 
 [node name="Shrink" parent="Jury/Chairs/Sketchfab_Scene2" node_paths=PackedStringArray("toDelete", "toShrinkMesh", "RB") instance=ExtResource("13_jqacm")]
-toDelete = NodePath("../../Sketchfab_Scene")
-toShrinkMesh = NodePath("../../Sketchfab_Scene/RigidBody3D/Sketchfab_model/Root/Plane/Plane_0")
-RB = NodePath("../../Sketchfab_Scene/RigidBody3D")
+toDelete = NodePath("..")
+toShrinkMesh = NodePath("../RigidBody3D/Sketchfab_model/Root/Plane/Plane_0")
+RB = NodePath("../RigidBody3D")
 
 [node name="Sketchfab_Scene3" type="Node3D" parent="Jury/Chairs"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20.1661, 1.00783, 33.8951)
@@ -445,9 +453,9 @@ mesh = SubResource("ArrayMesh_ii4ca")
 skeleton = NodePath("")
 
 [node name="Shrink" parent="Jury/Chairs/Sketchfab_Scene3" node_paths=PackedStringArray("toDelete", "toShrinkMesh", "RB") instance=ExtResource("13_jqacm")]
-toDelete = NodePath("../../Sketchfab_Scene")
-toShrinkMesh = NodePath("../../Sketchfab_Scene/RigidBody3D/Sketchfab_model/Root/Plane/Plane_0")
-RB = NodePath("../../Sketchfab_Scene/RigidBody3D")
+toDelete = NodePath("..")
+toShrinkMesh = NodePath("../RigidBody3D/Sketchfab_model/Root/Plane/Plane_0")
+RB = NodePath("../RigidBody3D")
 
 [node name="Sketchfab_Scene4" type="Node3D" parent="Jury/Chairs"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20.1661, 1.00783, 31.5604)
@@ -474,9 +482,9 @@ mesh = SubResource("ArrayMesh_ii4ca")
 skeleton = NodePath("")
 
 [node name="Shrink" parent="Jury/Chairs/Sketchfab_Scene4" node_paths=PackedStringArray("toDelete", "toShrinkMesh", "RB") instance=ExtResource("13_jqacm")]
-toDelete = NodePath("../../Sketchfab_Scene")
-toShrinkMesh = NodePath("../../Sketchfab_Scene/RigidBody3D/Sketchfab_model/Root/Plane/Plane_0")
-RB = NodePath("../../Sketchfab_Scene/RigidBody3D")
+toDelete = NodePath("..")
+toShrinkMesh = NodePath("../RigidBody3D/Sketchfab_model/Root/Plane/Plane_0")
+RB = NodePath("../RigidBody3D")
 
 [node name="Sketchfab_Scene5" type="Node3D" parent="Jury/Chairs"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18.0881, 0.537071, 38.5106)
@@ -503,9 +511,9 @@ mesh = SubResource("ArrayMesh_ii4ca")
 skeleton = NodePath("")
 
 [node name="Shrink" parent="Jury/Chairs/Sketchfab_Scene5" node_paths=PackedStringArray("toDelete", "toShrinkMesh", "RB") instance=ExtResource("13_jqacm")]
-toDelete = NodePath("../../Sketchfab_Scene")
-toShrinkMesh = NodePath("../../Sketchfab_Scene/RigidBody3D/Sketchfab_model/Root/Plane/Plane_0")
-RB = NodePath("../../Sketchfab_Scene/RigidBody3D")
+toDelete = NodePath("..")
+toShrinkMesh = NodePath("../RigidBody3D/Sketchfab_model/Root/Plane/Plane_0")
+RB = NodePath("../RigidBody3D")
 
 [node name="Sketchfab_Scene6" type="Node3D" parent="Jury/Chairs"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18.0881, 0.537071, 36.1284)
@@ -532,9 +540,9 @@ mesh = SubResource("ArrayMesh_ii4ca")
 skeleton = NodePath("")
 
 [node name="Shrink" parent="Jury/Chairs/Sketchfab_Scene6" node_paths=PackedStringArray("toDelete", "toShrinkMesh", "RB") instance=ExtResource("13_jqacm")]
-toDelete = NodePath("../../Sketchfab_Scene")
-toShrinkMesh = NodePath("../../Sketchfab_Scene/RigidBody3D/Sketchfab_model/Root/Plane/Plane_0")
-RB = NodePath("../../Sketchfab_Scene/RigidBody3D")
+toDelete = NodePath("..")
+toShrinkMesh = NodePath("../RigidBody3D/Sketchfab_model/Root/Plane/Plane_0")
+RB = NodePath("../RigidBody3D")
 
 [node name="Sketchfab_Scene7" type="Node3D" parent="Jury/Chairs"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18.0881, 0.537071, 33.8908)
@@ -561,9 +569,9 @@ mesh = SubResource("ArrayMesh_ii4ca")
 skeleton = NodePath("")
 
 [node name="Shrink" parent="Jury/Chairs/Sketchfab_Scene7" node_paths=PackedStringArray("toDelete", "toShrinkMesh", "RB") instance=ExtResource("13_jqacm")]
-toDelete = NodePath("../../Sketchfab_Scene")
-toShrinkMesh = NodePath("../../Sketchfab_Scene/RigidBody3D/Sketchfab_model/Root/Plane/Plane_0")
-RB = NodePath("../../Sketchfab_Scene/RigidBody3D")
+toDelete = NodePath("..")
+toShrinkMesh = NodePath("../RigidBody3D/Sketchfab_model/Root/Plane/Plane_0")
+RB = NodePath("../RigidBody3D")
 
 [node name="Sketchfab_Scene8" type="Node3D" parent="Jury/Chairs"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18.0881, 0.537071, 31.6025)
@@ -590,14 +598,17 @@ mesh = SubResource("ArrayMesh_ii4ca")
 skeleton = NodePath("")
 
 [node name="Shrink" parent="Jury/Chairs/Sketchfab_Scene8" node_paths=PackedStringArray("toDelete", "toShrinkMesh", "RB") instance=ExtResource("13_jqacm")]
-toDelete = NodePath("../../Sketchfab_Scene")
-toShrinkMesh = NodePath("../../Sketchfab_Scene/RigidBody3D/Sketchfab_model/Root/Plane/Plane_0")
-RB = NodePath("../../Sketchfab_Scene/RigidBody3D")
+toDelete = NodePath("..")
+toShrinkMesh = NodePath("../RigidBody3D/Sketchfab_model/Root/Plane/Plane_0")
+RB = NodePath("../RigidBody3D")
 
 [node name="People" type="Node3D" parent="Jury"]
 
 [node name="jury1" parent="Jury/People" instance=ExtResource("13_k8unu")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -18.173, 1.57884, 36.0941)
+
+[node name="jury9" parent="Jury/People" instance=ExtResource("13_k8unu")]
+transform = Transform3D(0.95882, 0, 0.284015, 0, 1, 0, -0.284015, 0, 0.95882, 7.11848, 0.174577, 33.3011)
 
 [node name="jury2" parent="Jury/People" instance=ExtResource("14_kyi31")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -20.0819, 2.07141, 31.5599)
@@ -929,7 +940,7 @@ shape = SubResource("BoxShape3D_4frwk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25488, 0)
 
 [node name="GameTimer" type="Timer" parent="."]
-wait_time = 100.0
+wait_time = 135.0
 autostart = true
 script = ExtResource("7_ww7qq")
 
@@ -938,14 +949,6 @@ autostart = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.405955, 0.913893, 0, -0.913893, -0.405955, 0, 16.3551, -9.94631)
-
-[node name="Control" parent="." instance=ExtResource("20_xdkft")]
-
-[node name="WinGame" parent="Control" instance=ExtResource("21_3hs35")]
-layout_mode = 1
-
-[node name="LoseGame" parent="Control" instance=ExtResource("22_4vl8v")]
-layout_mode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("27_8jcsu")
@@ -959,8 +962,8 @@ autoplay = true
 [connection signal="timeout" from="GameTimer" to="Sprite3D/Label3D" method="gameOver" binds= [true]]
 [connection signal="timeout" from="GameTimer/Timer" to="Control" method="setTime"]
 
+[editable path="Control"]
 [editable path="Mesh"]
 [editable path="Mesh/chimp_rigged"]
 [editable path="CharacterBody3D2"]
 [editable path="Witness"]
-[editable path="Control"]

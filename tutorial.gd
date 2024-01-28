@@ -1,10 +1,10 @@
 extends Control
 
-var timeLeft = 100
+var timeLeft = 135
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	timeLeft = 101
+	timeLeft = 136
 	setTime()
 	TutorialManager.tutorialControl = self
 	TutorialManager.setTutorial(0)
