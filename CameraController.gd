@@ -24,7 +24,7 @@ func _input(event):
 		return
 	if event is InputEventMouseMotion:
 		rotate_x(deg_to_rad(-event.relative.y*sensitivityY*sensitivityYMulti))
-		rotation.x = clamp(rotation.x,deg_to_rad((5)),deg_to_rad((55)))
+		rotation.x = clamp(rotation.x,deg_to_rad((-5)),deg_to_rad((55)))
 		player.rotate_y(deg_to_rad(-event.relative.x*sensitivityX*sensitivityXMulti))
 		
 

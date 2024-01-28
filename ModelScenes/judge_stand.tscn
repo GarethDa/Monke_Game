@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://u8cmbublhnhw"]
+
+[ext_resource type="PackedScene" uid="uid://cs58gy7f8jlf3" path="res://Models/judgeStand.glb" id="1_f0mm0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ku2g"]
+size = Vector3(2.01282, 0.225098, 1.35852)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xtjro"]
+size = Vector3(2.00024, 0.989807, 0.275269)
+
+[node name="judgeStand" instance=ExtResource("1_f0mm0")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.10352e-05, 0.112549, -0.0570679)
+shape = SubResource("BoxShape3D_5ku2g")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00012207, 0.503815, -0.862854)
+shape = SubResource("BoxShape3D_xtjro")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://tl2ffv2i5ld"]
+
+[ext_resource type="PackedScene" uid="uid://bi320u266y167" path="res://Models/border.glb" id="1_nu0mc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hfshb"]
+size = Vector3(1.98755, 1, 0.349609)
+
+[node name="border" instance=ExtResource("1_nu0mc")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00280762, 0.510723, 0)
+shape = SubResource("BoxShape3D_hfshb")
