@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkj1no8jv5noe"]
+[gd_scene load_steps=7 format=3 uid="uid://bkj1no8jv5noe"]
 
 [ext_resource type="Texture2D" uid="uid://c8m20427pap60" path="res://Models/judge_judge.png" id="1_c7e8i"]
+[ext_resource type="PackedScene" uid="uid://dqi7b5ybhcvdb" path="res://shrink.tscn" id="2_aeul5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qg5pr"]
 size = Vector3(1, 1.99524, 0.699585)
@@ -57,3 +58,8 @@ shape = SubResource("BoxShape3D_qg5pr")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.355286, -0.91042)
 mesh = SubResource("ArrayMesh_73ri2")
 skeleton = NodePath("")
+
+[node name="Shrink" parent="." node_paths=PackedStringArray("toDelete", "toShrinkMesh", "RB") instance=ExtResource("2_aeul5")]
+toDelete = NodePath("..")
+toShrinkMesh = NodePath("../RigidBody3D/Cube_002")
+RB = NodePath("../RigidBody3D")

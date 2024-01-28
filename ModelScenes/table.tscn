@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ct4wkktxky4vf"]
+[gd_scene load_steps=9 format=3 uid="uid://ct4wkktxky4vf"]
 
 [ext_resource type="Texture2D" uid="uid://c31ol7ftuhe5n" path="res://Models/wood_table_lowpoly_0.png" id="1_ba3d3"]
 [ext_resource type="Texture2D" uid="uid://bmo4tx0lt0n3v" path="res://Models/wood_table_lowpoly_1.png" id="2_hrrfd"]
 [ext_resource type="Texture2D" uid="uid://bdv83u2wkttlh" path="res://Models/wood_table_lowpoly_2.png" id="3_k8670"]
+[ext_resource type="PackedScene" uid="uid://dqi7b5ybhcvdb" path="res://shrink.tscn" id="4_5wgan"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mki0m"]
 size = Vector3(2.417, 1.01, 1)
@@ -74,3 +75,10 @@ transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 0, 0, 0)
 [node name="Box002_Material #128 Slot #1_0" type="MeshInstance3D" parent="RigidBody3D/Sketchfab_model/ec5ecec8f8984b7e8101de40b559f83e_fbx/RootNode/Box002"]
 mesh = SubResource("ArrayMesh_u6vme")
 skeleton = NodePath("")
+
+[node name="Shrink" parent="." node_paths=PackedStringArray("toDelete", "toShrinkMesh", "RB") instance=ExtResource("4_5wgan")]
+transform = Transform3D(1, 3.55271e-15, -3.55271e-15, -3.55271e-15, 1, 0, 3.55271e-15, -2.11758e-22, 1, -3.55271e-15, 0, 2.11758e-22)
+shrinkSpeed = 1.0
+toDelete = NodePath("..")
+toShrinkMesh = NodePath("../RigidBody3D/Sketchfab_model/ec5ecec8f8984b7e8101de40b559f83e_fbx/RootNode/Box002/Box002_Material #128 Slot #1_0")
+RB = NodePath("../RigidBody3D")

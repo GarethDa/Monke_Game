@@ -8,7 +8,7 @@ size = Vector3(1, 2.09801, 1)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." groups=["Witness"]]
 script = ExtResource("1_snr32")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
