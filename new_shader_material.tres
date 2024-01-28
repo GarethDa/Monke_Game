@@ -1,12 +1,8 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://cdbpgsptafxgv"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cdbpgsptafxgv"]
 
-[ext_resource type="Shader" path="res://Dissolve.gdshader" id="1_7y57q"]
-[ext_resource type="Texture2D" uid="uid://hbjx6h6gu7ot" path="res://perlin 15 - 512x512.png" id="2_il0ly"]
-[ext_resource type="Texture2D" uid="uid://e4mls6tri6j" path="res://Models/chair_2_0.png" id="3_qtwye"]
+[ext_resource type="Shader" path="res://gradient.gdshader" id="1_2mmi1"]
 
 [resource]
-render_priority = 0
-shader = ExtResource("1_7y57q")
-shader_parameter/amt = 1.04
-shader_parameter/tex = ExtResource("3_qtwye")
-shader_parameter/noise = ExtResource("2_il0ly")
+shader = ExtResource("1_2mmi1")
+shader_parameter/blur = 2.5
+shader_parameter/brightness = 0.864

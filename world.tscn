@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://d2ofwqt0mbycd"]
+[gd_scene load_steps=40 format=3 uid="uid://d2ofwqt0mbycd"]
 
 [ext_resource type="PackedScene" uid="uid://cs4220jcdxays" path="res://Character.tscn" id="1_7j1pg"]
 [ext_resource type="Script" path="res://MeshAni.gd" id="2_goceo"]
@@ -20,6 +20,8 @@
 [ext_resource type="Script" path="res://GameTimer.gd" id="7_ww7qq"]
 [ext_resource type="PackedScene" uid="uid://u8cmbublhnhw" path="res://ModelScenes/judge_stand.tscn" id="8_nxwv4"]
 [ext_resource type="PackedScene" uid="uid://bkj1no8jv5noe" path="res://ModelScenes/judge.tscn" id="10_tr18j"]
+[ext_resource type="PackedScene" uid="uid://bgmrx5tcgte1h" path="res://win_game.tscn" id="21_3hs35"]
+[ext_resource type="PackedScene" uid="uid://ce54e66qtkvas" path="res://lose_game.tscn" id="22_4vl8v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5icq5"]
 size = Vector3(1, 2.18756, 1)
@@ -118,32 +120,38 @@ animator = NodePath("chimp_rigged/AnimationPlayer")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.065, 0)
 
 [node name="Skeleton3D" parent="Mesh/chimp_rigged/Armature" index="0"]
-bones/0/position = Vector3(-1.34177, 11.8104, -200.655)
-bones/0/rotation = Quaternion(-0.704491, -0.0279144, 0.0215437, 0.708837)
-bones/1/rotation = Quaternion(0.0486138, 0.0614963, -0.0054175, 0.996908)
-bones/2/rotation = Quaternion(-0.0259834, 0.00947028, 0.00515417, 0.999604)
-bones/3/rotation = Quaternion(-0.0258581, 0.00949693, 0.00471857, 0.999609)
-bones/4/rotation = Quaternion(0.0119662, -0.00994977, -0.0139253, 0.999782)
-bones/5/rotation = Quaternion(-0.141533, -0.0599889, -0.0955962, 0.983479)
-bones/7/rotation = Quaternion(-0.598044, -0.405118, 0.570137, -0.391365)
-bones/8/rotation = Quaternion(0.357283, 0.335875, -0.170614, 0.85465)
-bones/9/rotation = Quaternion(0.00945605, -0.062028, 0.303121, 0.950884)
-bones/11/rotation = Quaternion(0.595906, -0.401684, 0.577672, 0.387094)
-bones/12/rotation = Quaternion(0.335563, 0.138168, -0.0502293, 0.930475)
-bones/13/rotation = Quaternion(0.0157993, 0.0884461, -0.429737, 0.898473)
-bones/15/rotation = Quaternion(0.0732935, 0.16146, 0.980867, -0.080372)
-bones/16/rotation = Quaternion(-0.672168, -0.0364604, -0.000316228, 0.7395)
-bones/17/rotation = Quaternion(0.667271, -0.0296055, 0.0208065, 0.743936)
-bones/18/rotation = Quaternion(0.280315, -0.179909, 0.044712, 0.941837)
-bones/20/rotation = Quaternion(-0.0674924, 0.0143772, 0.996453, 0.0481575)
-bones/21/rotation = Quaternion(-0.330551, -0.0144394, 0.0391572, 0.942865)
-bones/22/rotation = Quaternion(0.687631, 0.01668, -0.00711729, 0.725834)
-bones/23/rotation = Quaternion(0.400427, 0.16947, -0.0221922, 0.900248)
-
-[node name="AnimationTree" parent="Mesh/chimp_rigged" index="2"]
-parameters/jumptrigger/active = false
-parameters/jumptrigger/internal_active = false
-parameters/jumptrigger/request = 0
+bones/0/position = Vector3(0.11123, 11.5, -198.362)
+bones/0/rotation = Quaternion(-0.696645, -0.0336213, 0.0211238, 0.716316)
+bones/1/rotation = Quaternion(0.04565, 0.0466709, -0.00699268, 0.997842)
+bones/2/rotation = Quaternion(-0.0285869, 0.00673065, 0.00479052, 0.999557)
+bones/3/rotation = Quaternion(-0.028586, 0.00686509, 0.00465302, 0.999557)
+bones/4/position = Vector3(-4.17233e-07, 42.5391, 1.9663e-06)
+bones/4/rotation = Quaternion(0.0068137, -0.00279055, -0.0117304, 0.999904)
+bones/5/position = Vector3(-3.12924e-07, 39.1502, 2.53405)
+bones/5/rotation = Quaternion(-0.10879, -0.0236289, -0.0286905, 0.99337)
+bones/6/position = Vector3(-2.38419e-06, 136.905, 8.86136)
+bones/7/position = Vector3(24.552, 36.5023, -0.449165)
+bones/7/rotation = Quaternion(-0.603244, -0.396986, 0.579247, -0.378116)
+bones/8/position = Vector3(-4.31417e-06, 50.925, -1.05956e-05)
+bones/8/rotation = Quaternion(0.193027, 0.415679, -0.0739712, 0.885709)
+bones/9/position = Vector3(-1.09254e-05, 61.0466, 1.46128e-05)
+bones/9/rotation = Quaternion(0.0208741, -0.0730687, 0.41893, 0.904833)
+bones/10/position = Vector3(6.06478e-06, 85.6004, 4.7013e-06)
+bones/11/rotation = Quaternion(0.591825, -0.408835, 0.569274, 0.398152)
+bones/12/position = Vector3(-5.39328e-06, 50.925, 5.64985e-06)
+bones/12/rotation = Quaternion(0.32442, 0.0351899, 0.0533399, 0.943752)
+bones/13/position = Vector3(3.90046e-06, 61.0449, -1.65631e-05)
+bones/13/rotation = Quaternion(0.0184527, 0.0851455, -0.438756, 0.894373)
+bones/14/position = Vector3(1.03712e-05, 85.6003, -8.047e-07)
+bones/15/rotation = Quaternion(0.0868997, 0.0571803, 0.992174, -0.0690657)
+bones/16/rotation = Quaternion(-0.719178, -0.0272842, -0.00269803, 0.694284)
+bones/17/rotation = Quaternion(0.738357, -0.0460313, -0.00656381, 0.672806)
+bones/18/position = Vector3(4.06534e-06, 53.8302, 4.87795e-06)
+bones/18/rotation = Quaternion(0.268657, -0.184576, 0.0455886, 0.944286)
+bones/20/rotation = Quaternion(-0.0476071, 0.0957326, 0.993629, 0.0356553)
+bones/21/rotation = Quaternion(-0.367557, 0.00963541, 0.0400138, 0.92909)
+bones/22/rotation = Quaternion(0.692134, 0.0208575, -0.00435185, 0.721454)
+bones/23/rotation = Quaternion(0.333146, 0.175244, -0.033198, 0.925852)
 
 [node name="CharacterBody3D2" parent="." node_paths=PackedStringArray("camera", "cameraOrigin", "mesh") instance=ExtResource("1_7j1pg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 24.6799)
@@ -165,7 +173,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.847197, 0)
 
 [node name="Node3D" parent="CharacterBody3D2" index="3" node_paths=PackedStringArray("player")]
 sensitivityX = 0.2
-sensitivityY = 0.2
 player = NodePath("..")
 
 [node name="SpringArm3D" parent="CharacterBody3D2/Node3D" index="0" node_paths=PackedStringArray("playerExclude")]
@@ -641,6 +648,12 @@ normalSpeech = ExtResource("5_n7y65")
 angrySpeech = ExtResource("5_va805")
 witnessSpeechPos = NodePath("../../Witness/SpeechPos")
 prosecutorSpeechPos = NodePath("../../Prosecutor/SpeechPos")
+
+[node name="WinGame" parent="Sprite3D/Label3D" instance=ExtResource("21_3hs35")]
+visible = false
+
+[node name="LoseGame" parent="Sprite3D/Label3D" instance=ExtResource("22_4vl8v")]
+visible = false
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("7_0rbdx")]
 transform = Transform3D(0.589831, 0, 0.807527, 0, 1, 0, -0.807527, 0, 0.589831, 16.4736, 0.25792, 39.6167)

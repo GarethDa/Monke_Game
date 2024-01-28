@@ -13,6 +13,8 @@ var paused : bool = false
 @export var angrySpeech : Texture
 @export var witnessSpeechPos : Node3D
 @export var prosecutorSpeechPos : Node3D
+@export var winScreen : ColorRect
+@export var loseScreen : ColorRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -68,7 +70,11 @@ func _on_area_3d_changed_anger(angry, username):
 			font_size = 120
 		
 func gameOver(win : bool):
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if win:
+		winScreen.visible = true
+		
 		print("WIN")
 		return
+	loseScreen.visible = true
 	print("LOSE")
