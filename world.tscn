@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://d2ofwqt0mbycd"]
+[gd_scene load_steps=19 format=3 uid="uid://d2ofwqt0mbycd"]
 
 [ext_resource type="PackedScene" uid="uid://cs4220jcdxays" path="res://Character.tscn" id="1_7j1pg"]
+[ext_resource type="PackedScene" uid="uid://cup2mg1jmf4j2" path="res://pause_menu.tscn" id="2_ip20b"]
 [ext_resource type="PackedScene" uid="uid://b6rlty13qynne" path="res://Mesh.tscn" id="4_rs26s"]
 [ext_resource type="Script" path="res://TextGeneration.gd" id="5_7712x"]
 [ext_resource type="PackedScene" uid="uid://bhlf18hn02c2e" path="res://hittableGuy.tscn" id="5_esl4b"]
@@ -51,6 +52,8 @@ player = NodePath("..")
 
 [node name="SpringArm3D" parent="CharacterBody3D2/Node3D" index="0" node_paths=PackedStringArray("playerExclude")]
 playerExclude = NodePath("../../../Mesh")
+
+[node name="PauseMenu" parent="CharacterBody3D2" instance=ExtResource("2_ip20b")]
 
 [node name="Mesh" parent="." instance=ExtResource("4_rs26s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 24.6799)
