@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://ce54e66qtkvas"]
+
+[ext_resource type="Shader" path="res://gradient.gdshader" id="1_oeywx"]
+[ext_resource type="Script" path="res://lose_game.gd" id="2_sdw24"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e7o24"]
+shader = ExtResource("1_oeywx")
+shader_parameter/blur = 2.5
+shader_parameter/brightness = 0.9
+
+[sub_resource type="InputEventAction" id="InputEventAction_q4r7v"]
+action = &"ui_cancel"
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_7uvq1"]
+events = [SubResource("InputEventAction_q4r7v")]
+
+[node name="LoseGame" type="ColorRect"]
+material = SubResource("ShaderMaterial_e7o24")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_sdw24")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(640, 400)
+layout_direction = 1
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Your client was found..."
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 128
+text = "GUILTY"
+horizontal_alignment = 1
+
+[node name="MenuBtn" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+shortcut = SubResource("Shortcut_7uvq1")
+text = "Return to Main Menu"
+
+[node name="QuitBtn" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Quit"
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MenuBtn" to="." method="_on_menu_btn_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]
