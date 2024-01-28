@@ -57,6 +57,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
 		velocity.y = jumpVelocity
 		emit_signal("onPlayerJump")
+		TutorialManager.setTutorial(2)
 		if hasMoved && !hasJumped:
 			jumped.emit()
 			hasJumped = true
@@ -75,6 +76,7 @@ func _process(delta: float) -> void:
 		velocity.z = direction.z * SPEED
 		
 		mesh.rotation.y = lerp_angle(mesh.rotation.y , atan2(direction.x,direction.z), delta * turnSpeed)
+		TutorialManager.setTutorial(1)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)

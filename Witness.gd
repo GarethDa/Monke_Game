@@ -29,6 +29,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	body.get_parent().find_child("Shrink").play = true
 	print("collided")
 	ChangedAnger.emit(true, get_parent_node_3d().name)
+	TutorialManager.setTutorial(TutorialManager.getTutorial()+1)
 	if body.is_in_group("Big"):
 		timeLeftStunned = bigHitTimeStunned	
 		print("here")
