@@ -120,7 +120,7 @@ mesh = NodePath("../Mesh")
 [node name="Collider" parent="CharacterBody3D2" index="0" node_paths=PackedStringArray("player", "heldItemTransform")]
 player = NodePath("..")
 heldItemTransform = NodePath("../../Mesh/RemoteTransform3D")
-upwardThrowMultiplier = 3.0
+upwardThrowMultiplier = 2.0
 
 [node name="Node3D" parent="CharacterBody3D2" index="3" node_paths=PackedStringArray("player")]
 sensitivityX = 0.2
@@ -569,7 +569,7 @@ shape = SubResource("ConcavePolygonShape3D_w30oi")
 environment = SubResource("Environment_6ysw2")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.404921, 0, 0, 0, 0.3506, 0, 0, 0, 1, 0, 4.93814, 0)
+transform = Transform3D(0.565885, 0, 0, 0, 0.503633, 0, 0, 0, 1, 0, 4.93814, 0)
 billboard = 1
 texture = ExtResource("5_n7y65")
 
