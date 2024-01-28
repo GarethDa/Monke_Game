@@ -27,6 +27,7 @@ func _input(event: InputEvent) -> void:
 			sizeMultiplier = torqueSizeMultiplier
 		var torque : Vector3 = Vector3(randf_range(-1,1),randf_range(-1,1),randf_range(-1,1))*(torqueMultiplier*sizeMultiplier)
 		
+		player.mesh.stopCarryingItem()
 		player.pickedUpItem.apply_torque(torque)
 		print(torque)
 		player.pickedUpItem = null
@@ -44,6 +45,7 @@ func setPickedUpItem(body):
 		previousContactsReported = player.pickedUpItem.get_max_contacts_reported()
 		player.pickedUpItem.set_max_contacts_reported(0)
 		player.pickedUpItem.add_to_group("Collected")
+		player.mesh.carryItem()
 
 func _on_body_shape_entered(body_rid: RID, body: Node3D, body_shape_index: int, local_shape_index: int) -> void:
 	setPickedUpItem(body)

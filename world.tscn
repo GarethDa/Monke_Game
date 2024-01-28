@@ -1,6 +1,7 @@
 [gd_scene load_steps=37 format=3 uid="uid://d2ofwqt0mbycd"]
 
 [ext_resource type="PackedScene" uid="uid://cs4220jcdxays" path="res://Character.tscn" id="1_7j1pg"]
+[ext_resource type="Script" path="res://MeshAni.gd" id="2_goceo"]
 [ext_resource type="PackedScene" uid="uid://dkle8cio78axt" path="res://ModelScenes/pew.tscn" id="2_j0ksp"]
 [ext_resource type="PackedScene" uid="uid://cuhdts7mmxg0l" path="res://ModelScenes/chair.tscn" id="2_u1mjq"]
 [ext_resource type="PackedScene" uid="uid://tl2ffv2i5ld" path="res://ModelScenes/border.tscn" id="3_byvm7"]
@@ -106,14 +107,47 @@ sky = SubResource("Sky_e3ad3")
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Mesh" parent="." instance=ExtResource("4_rs26s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 24.6799)
+[node name="Mesh" parent="." node_paths=PackedStringArray("characterBody", "animationTree", "animator") instance=ExtResource("4_rs26s")]
+transform = Transform3D(0.71, 0, 0, 0, 0.71, 0, 0, 0, 0.71, 0, 1.46886, 24.6799)
+script = ExtResource("2_goceo")
+characterBody = NodePath("../CharacterBody3D2")
+animationTree = NodePath("chimp_rigged/AnimationTree")
+animator = NodePath("chimp_rigged/AnimationPlayer")
 
-[node name="RemoteTransform3D" parent="Mesh" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28, 0)
+[node name="RemoteTransform3D" parent="Mesh" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.065, 0)
+
+[node name="Skeleton3D" parent="Mesh/chimp_rigged/Armature" index="0"]
+bones/0/position = Vector3(-1.34177, 11.8104, -200.655)
+bones/0/rotation = Quaternion(-0.704491, -0.0279144, 0.0215437, 0.708837)
+bones/1/rotation = Quaternion(0.0486138, 0.0614963, -0.0054175, 0.996908)
+bones/2/rotation = Quaternion(-0.0259834, 0.00947028, 0.00515417, 0.999604)
+bones/3/rotation = Quaternion(-0.0258581, 0.00949693, 0.00471857, 0.999609)
+bones/4/rotation = Quaternion(0.0119662, -0.00994977, -0.0139253, 0.999782)
+bones/5/rotation = Quaternion(-0.141533, -0.0599889, -0.0955962, 0.983479)
+bones/7/rotation = Quaternion(-0.598044, -0.405118, 0.570137, -0.391365)
+bones/8/rotation = Quaternion(0.357283, 0.335875, -0.170614, 0.85465)
+bones/9/rotation = Quaternion(0.00945605, -0.062028, 0.303121, 0.950884)
+bones/11/rotation = Quaternion(0.595906, -0.401684, 0.577672, 0.387094)
+bones/12/rotation = Quaternion(0.335563, 0.138168, -0.0502293, 0.930475)
+bones/13/rotation = Quaternion(0.0157993, 0.0884461, -0.429737, 0.898473)
+bones/15/rotation = Quaternion(0.0732935, 0.16146, 0.980867, -0.080372)
+bones/16/rotation = Quaternion(-0.672168, -0.0364604, -0.000316228, 0.7395)
+bones/17/rotation = Quaternion(0.667271, -0.0296055, 0.0208065, 0.743936)
+bones/18/rotation = Quaternion(0.280315, -0.179909, 0.044712, 0.941837)
+bones/20/rotation = Quaternion(-0.0674924, 0.0143772, 0.996453, 0.0481575)
+bones/21/rotation = Quaternion(-0.330551, -0.0144394, 0.0391572, 0.942865)
+bones/22/rotation = Quaternion(0.687631, 0.01668, -0.00711729, 0.725834)
+bones/23/rotation = Quaternion(0.400427, 0.16947, -0.0221922, 0.900248)
+
+[node name="AnimationTree" parent="Mesh/chimp_rigged" index="2"]
+parameters/jumptrigger/active = false
+parameters/jumptrigger/internal_active = false
+parameters/jumptrigger/request = 0
 
 [node name="CharacterBody3D2" parent="." node_paths=PackedStringArray("camera", "cameraOrigin", "mesh") instance=ExtResource("1_7j1pg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46886, 24.6799)
+maxSpeed = 10.0
 camera = NodePath("Node3D/SpringArm3D/Camera3D")
 cameraOrigin = NodePath("Node3D")
 mesh = NodePath("../Mesh")
@@ -123,13 +157,22 @@ player = NodePath("..")
 heldItemTransform = NodePath("../../Mesh/RemoteTransform3D")
 upwardThrowMultiplier = 2.0
 
+[node name="CollisionShape3D2" parent="CharacterBody3D2/Collider" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09383, 0)
+
+[node name="CollisionShape3D" parent="CharacterBody3D2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.847197, 0)
+
 [node name="Node3D" parent="CharacterBody3D2" index="3" node_paths=PackedStringArray("player")]
 sensitivityX = 0.2
 sensitivityY = 0.2
 player = NodePath("..")
 
 [node name="SpringArm3D" parent="CharacterBody3D2/Node3D" index="0" node_paths=PackedStringArray("playerExclude")]
-playerExclude = NodePath("../../../Mesh")
+playerExclude = NodePath("../../../Mesh/chimp_rigged/Armature/Skeleton3D/Roundcube")
+
+[node name="Camera3D" parent="CharacterBody3D2/Node3D/SpringArm3D" index="0"]
+current = true
 
 [node name="PauseMenu" parent="CharacterBody3D2" instance=ExtResource("3_gevag")]
 
@@ -620,10 +663,12 @@ script = ExtResource("7_ww7qq")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.405955, 0.913893, 0, -0.913893, -0.405955, 0, 16.3551, -9.94631)
 
+[connection signal="onPlayerJump" from="CharacterBody3D2" to="Mesh" method="_on_player_on_player_jump"]
 [connection signal="ChangedAnger" from="Witness/Area3D" to="Sprite3D/Label3D" method="_on_area_3d_changed_anger"]
 [connection signal="ChangedAnger" from="Prosecutor/Area3D" to="Sprite3D/Label3D" method="_on_area_3d_changed_anger"]
 
 [editable path="Mesh"]
+[editable path="Mesh/chimp_rigged"]
 [editable path="CharacterBody3D2"]
 [editable path="Witness"]
 [editable path="Prosecutor"]

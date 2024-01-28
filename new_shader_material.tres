@@ -7,6 +7,6 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_7y57q")
-shader_parameter/amt = 0.81
+shader_parameter/amt = 1.04
 shader_parameter/tex = ExtResource("3_qtwye")
 shader_parameter/noise = ExtResource("2_il0ly")

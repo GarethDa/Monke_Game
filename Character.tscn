@@ -7,9 +7,10 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t7wf1"]
 radius = 0.973886
+height = 2.29241
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f5q0g"]
-height = 1.75
+height = 1.89327
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uxd3r"]
 
